@@ -22,5 +22,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:3.8.1" level="project" />
+    <orderEntry type="library" name="@types/bootstrap" level="application" />
+    <orderEntry type="library" name="@types/bootstrap-3-typeahead" level="application" />
+    <orderEntry type="library" name="@types/jquery" level="application" />
   </component>
 </module>

@@ -1,0 +1,91 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+}
+
+section {
+    display: block;
+}
+
+::selection {
+    background: rgba(224, 165, 91, 0.82);
+    color: #ffffff;
+}
+
+main {
+    margin-top: 70px;
+}
+
+div {
+    position: relative;
+    display: block;
+}
+
+div:end {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+body {
+    min-width: 320px;
+    height: 100%;
+    font-family: 'Roboto slab', sans-serif;
+    color: #888888;
+    /*background: url(../img/kosmos.jpg);*/
+    /*background-size: cover;*/
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+
+.comic {
+    position: relative;
+}
+
+.finder {
+    position: relative;
+    top: 100%;
+    width: 100%;
+    z-index: 6;
+    margin-bottom: 50px;
+}
+
+#findButton {
+    right: 10px;
+    height: 42px;
+    width: 100px;
+    position: absolute;
+    border: 2px;
+    font-size: 20pt;
+    color: white;
+    background-color: black;
+    text-align: center;
+    border-radius: 5pt;
+    padding-bottom: 8px;
+    padding-top: 4px;
+}
+
+#inputID {
+    width: 300px;
+    position: absolute;
+    right: 100px;
+    height: 40px;
+    margin-top: 2px;
+    margin-right: 20px;
+    font-size: 20pt;
+    color: red;
+    border-color: black;
+}
