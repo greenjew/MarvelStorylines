@@ -6,39 +6,42 @@ var inputID;
 
 function setup() {
     inputID = document.getElementById('inputID');
-    // loadJSON(url, gotData);
 }
 
 //Called after inputing text
 function FindEvents() {
     eventName = inputID.value;
     url = "https://gateway.marvel.com/v1/public/events?nameStartsWith=" + eventName + "&" + KEY;
-    loadJSON(url, gotData)
+    loadJSON(url, gotRequest)
 }
 
-function gotData(data) {
-
-    console.log(data.data)
+function gotRequest(data) {
     //got choosen event
+    console.log(data.data.results[0]);
     var cur_image_url = data.data.results[0].thumbnail.path;
-    document.getElementById('cur_event').src = cur_image_url + "/standard_xlarge.jpg";
+    document.getElementById('thumb-1').src = cur_image_url + "/standard_small.jpg";
+    document.getElementById('description-1').innerText = data.data.results[0].description;
+    document.getElementsByClassName('found')[0].style.visibility = 'visible';
 
-    loadJSON(data.data.results[0].next.resourceURI + "?" + KEY, gotNextEvent);
-    loadJSON(data.data.results[0].previous.resourceURI + "?" + KEY, gotPrevEvent);
+    loadJSON(data.data.results[0].next.resourceURI + "?" + KEY, gotSecondRequest);
+    loadJSON(data.data.results[0].previous.resourceURI + "?" + KEY, gotThirdRequest);
 }
 
-function gotNextEvent(data) {
-    console.log("next")
+function gotSecondRequest(data) {
     //got next event
+    console.log(data.data.results[0]);
     var next_image_url = data.data.results[0].thumbnail.path;
-    document.getElementById('next_event').src = next_image_url + "/standard_xlarge.jpg";
-
+    document.getElementById('thumb-2').src = next_image_url + "/standard_small.jpg";
+    document.getElementById('description-2').innerText = data.data.results[0].description;
+    document.getElementsByClassName('found')[1].style.visibility = 'visible';
 }
 
-function gotPrevEvent(data) {
-    console.log("prev")
+function gotThirdRequest(data) {
     //got previous event
+    console.log(data.data.results[0]);
     var prev_image_url = data.data.results[0].thumbnail.path;
-    document.getElementById('prev_event').src = prev_image_url + "/standard_xlarge.jpg";
+    document.getElementById('thumb-3').src = prev_image_url + "/standard_small.jpg";
+    document.getElementById('description-3').innerText = data.data.results[0].description;
+    document.getElementsByClassName('found')[2].style.visibility = 'visible';
 }
 

@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/simplegrid.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Bootstrap core CSS -->
+    <link href='https://fonts.googleapis.com/css?family=Marvel' rel='stylesheet'>
+
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -24,54 +25,87 @@
 </head>
 
 <body>
-<header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a id="nav" class="navbar-brand" href="#">Marvel universe events</a>
-        </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="pages/about.html">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+<header>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target=".navbar-collapse">
+
+                </button>
+                <a id="nav" class="navbar-brand" href="index.html">Marvel universe events</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="pages/about.html">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
 </header>
+
 <main>
-
     <section class="finder">
-        <input type="text" id="inputID" placeholder="Let's find an event"
-               value="">
-        <button id="findButton" type="button" class="btn btn-default" onclick="FindEvents()">Find</button>
-
-    </section>
-
-    <section id="comics">
         <div class="grid">
-            <div class="col-1-1">
-                <div class="comic">
-                    <div class="img col-4-12">
-                        <img id="prev_event">
-                    </div>
-                    <div class="img col-4-12">
-                        <img id="cur_event">
-                    </div>
-                    <div class="img col-4-12">
-                        <img id="next_event">
+            <div class="col-1-2">
+                <div class="description col-5-12">
+                    <h1>
+                        This is app that can help you to understand order of events in storyline of Marvel comics;
+                    </h1>
+                </div>
+                <input type="text" id="inputID" placeholder="Let's find an event" onchange="FindEvents()">
+                <!--<button id="findButton" type="button" class="btn btn-default" onclick="FindEvents()">Find</button>-->
+
+                <div class="btn-group-vertical" id=foundEvents">
+                    <div class="col-1-1">
+
+                        <button class="found btn-default" type="button">
+                            <div class=col-1-1>
+                                <img id="thumb-1" style="float: left; margin-right: 10px">
+                                <h5 id="header-1"></h5>
+                                <p id="description-1"></p>
+                            </div>
+                        </button>
+
+                        <button class="found btn-default" type="button">
+                            <div class=col-1-1>
+                                <img id="thumb-2" style="float: left; margin-right: 10px">
+                                <h5 id="header-2"></h5>
+                                <p id="description-2"></p>
+                                </p>
+                            </div>
+                        </button>
+
+                        <button class="found btn-default" type="button">
+                            <img id="thumb-3" style="float: left; margin-right: 10px">
+                            <h5 id="header-3"></h5>
+                            <p id="description-3"></p>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!--<section class="comics">-->
+    <!--<div class="grid">-->
+    <!--<div class="col-1-1">-->
+    <!--<div class="comic">-->
+    <!--<div class="img col-4-12">-->
+    <!--<img id="prev_event">-->
+    <!--</div>-->
+    <!--<div class="img col-4-12">-->
+    <!--<img id="cur_event">-->
+    <!--</div>-->
+    <!--<div class="img col-4-12">-->
+    <!--<img id="next_event">-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</section>-->
 </main>
 <!-- Bootstrap core JavaScript
 ================================================== -->

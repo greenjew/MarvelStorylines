@@ -4,15 +4,11 @@
     box-sizing: border-box;
     text-decoration: none;
     outline: none;
+    font-family: "Marvel";
 }
 
 section {
     display: block;
-}
-
-::selection {
-    background: rgba(224, 165, 91, 0.82);
-    color: #ffffff;
 }
 
 main {
@@ -20,7 +16,6 @@ main {
 }
 
 div {
-    position: relative;
     display: block;
 }
 
@@ -35,8 +30,6 @@ body {
     height: 100%;
     font-family: 'Roboto slab', sans-serif;
     color: #888888;
-    /*background: url(../img/kosmos.jpg);*/
-    /*background-size: cover;*/
 }
 
 img {
@@ -53,39 +46,76 @@ img {
 
 .comic {
     position: relative;
+    width: 50%;
+    float: left;
 }
 
 .finder {
+    background-image: url("https://i.annihil.us/u/prod/marvel/html_blocks_assets/homepage/comics/2018/02/comics-desktop-022718.jpg");
     position: relative;
+    height: 321px;
     top: 100%;
     width: 100%;
-    z-index: 6;
+    border-bottom: 5px;
     margin-bottom: 50px;
+
 }
 
-#findButton {
-    right: 10px;
-    height: 42px;
-    width: 100px;
-    position: absolute;
-    border: 2px;
-    font-size: 20pt;
-    color: white;
-    background-color: black;
-    text-align: center;
-    border-radius: 5pt;
-    padding-bottom: 8px;
-    padding-top: 4px;
+.finder .description {
+    position: relative;
+    margin: 10px;
+    width: 100%;
 }
 
 #inputID {
-    width: 300px;
-    position: absolute;
-    right: 100px;
+    width: 500px;
+    position: relative;
     height: 40px;
     margin-top: 2px;
-    margin-right: 20px;
+    margin-left: 10px;
     font-size: 20pt;
     color: red;
     border-color: black;
+    float: left;
+}
+
+#foundEvents {
+    width: 500px;
+    font-size: 20pt;
+    float: left;
+    visibility: hidden;
+}
+
+.found {
+    width: 500px;
+    height: 80px;
+    position: relative;
+    padding: 6px 6px;
+    margin-left: 10px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: left;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    border: 1px solid transparent;
+    visibility: hidden;
+}
+
+#header-1, #header-1, #header-2 {
+    position: relative;
+    word-wrap: normal;
+    width: 380px;
+    text-align: center;
+}
+
+#description-1, #description-2, #description-3 {
+    overflow: auto;
+    position: relative;
+    word-wrap: normal;
+    font-size: 15px;
+    width: 380px;
+    height: 47px;
+    padding-left: 10px;
 }
