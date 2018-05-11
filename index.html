@@ -50,38 +50,37 @@
     <section class="finder">
         <div class="grid">
             <div class="col-1-2">
-                <div class="description col-5-12">
+                <div class="info col-5-12">
                     <h1>
-                        This is app that can help you to understand order of events in storyline of Marvel comics;
+                        This is app that can help you to understand order of events in storyline of Marvel comics.
                     </h1>
                 </div>
-                <input type="text" id="inputID" placeholder="Let's find an event" onchange="FindEvents()">
+                <input type="text" id="inputID" placeholder="Let's find an event" oninput="FindEvents()">
                 <!--<button id="findButton" type="button" class="btn btn-default" onclick="FindEvents()">Find</button>-->
-
                 <div class="btn-group-vertical" id=foundEvents">
                     <div class="col-1-1">
-
+                        <div id="loader"></div>
                         <button class="found btn-default" type="button">
                             <div class=col-1-1>
-                                <img id="thumb-1" style="float: left; margin-right: 10px">
-                                <h5 id="header-1"></h5>
-                                <p id="description-1"></p>
+                                <img class="thumb" style="float: left; margin-right: 10px">
+                                <h5 class="title" style="font-weight: bold"></h5>
+                                <p class="description"></p>
                             </div>
                         </button>
 
-                        <button class="found btn-default" type="button">
+                        <button class="found btn-default" type="button" onclick="">
                             <div class=col-1-1>
-                                <img id="thumb-2" style="float: left; margin-right: 10px">
-                                <h5 id="header-2"></h5>
-                                <p id="description-2"></p>
+                                <img class="thumb" style="float: left; margin-right: 10px">
+                                <h5 class="title" style="font-weight: bold"></h5>
+                                <p class="description"></p>
                                 </p>
                             </div>
                         </button>
 
                         <button class="found btn-default" type="button">
-                            <img id="thumb-3" style="float: left; margin-right: 10px">
-                            <h5 id="header-3"></h5>
-                            <p id="description-3"></p>
+                            <img class="thumb" style="float: left; margin-right: 10px">
+                            <h5 class="title" style="font-weight: bold"></h5>
+                            <p class="description"></p>
                         </button>
                     </div>
                 </div>
