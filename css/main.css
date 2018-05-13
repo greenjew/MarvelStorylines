@@ -159,7 +159,7 @@ img {
 }
 
 #timeline {
-    height: co;
+    height: auto;
     z-index: 1;
 }
 
@@ -178,10 +178,10 @@ img {
 
 .zoomer {
     background: rgba(0, 0, 0, 0.5);
-    background-size: cover;
+    background-size: auto;
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: auto;
     top: 441px;
     left: 0;
     display: none;
@@ -205,8 +205,18 @@ img {
     padding-top: 10px;
     padding-bottom: 10px;
 }
+.zoomed_description{
+    overflow: auto;
+    position: relative;
+    word-wrap: normal;
+    font-size: 30px;
+    margin-top: 10px;
+    height: 150px;
+    background: rgba(255,255,255,0.5);
+}
 
 .characters{
+    clear: both;
     position: relative;
     text-align: center;
     margin-top: 10px;
