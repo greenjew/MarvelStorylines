@@ -10,7 +10,6 @@
     <script src="libraries/p5.dom.js" type="text/javascript"></script>
     <script src="libraries/jquery.js" type="text/javascript"></script>
     <script src="js/MarvelJSON.js" type="text/javascript"></script>
-    <script src="js/showInfo.js" type="text/javascript"></script>
     <title>Marvel Events</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/simplegrid.css">
@@ -91,7 +90,7 @@
     </section>
 
     <section id="timeline">
-        <div class="grid" >
+        <div class="grid">
             <div class="col-1-1">
                 <div style="text-align: center">
                     <h1 style="display: inline-block; float: left; margin-left: 20px"> Before </h1>
@@ -102,15 +101,18 @@
                 <div class="events">
                     <div class="event col-4-12">
                         <h3 class="title">text</h3>
-                        <img class="img" src="http://via.placeholder.com/250" id="prev_event">
+                        <img class="img" src="http://via.placeholder.com/250" id="prev_event"
+                             onclick="chosen_event = prev_event.results[0]">
                     </div>
                     <div class="event col-4-12">
                         <h3 class="title">text</h3>
-                        <img class="img" src="http://via.placeholder.com/250" id="cur_event">
+                        <img class="img" src="http://via.placeholder.com/250" id="cur_event"
+                             onclick="chosen_event = cur_event">
                     </div>
                     <div class="event col-4-12">
                         <h3 class="title">text</h3>
-                        <img class="img" src="http://via.placeholder.com/250" id="next_event">
+                        <img class="img" src="http://via.placeholder.com/250" id="next_event"
+                             onclick="chosen_event = next_event.results[0]">
                     </div>
                 </div>
             </div>

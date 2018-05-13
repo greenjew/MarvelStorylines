@@ -159,7 +159,7 @@ img {
 }
 
 #timeline {
-    height: 500px;
+    height: co;
     z-index: 1;
 }
 
@@ -177,6 +177,8 @@ img {
 }
 
 .zoomer {
+    background: rgba(0, 0, 0, 0.5);
+    background-size: cover;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -186,19 +188,41 @@ img {
     text-align: center;
 }
 
-.zoomer_bg {
-    background: rgba(0, 0, 0, 0.5);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-}
-
 .zoomed_img {
     position: relative;
-    z-index: 3;
+    z-index: 4;
     max-height: 80%;
     max-width: 80%;
-    margin: 1%;
-    padding-top: 180px;
+}
+
+.zoomed_title {
+    z-index: 4;
+    text-align: center;
+    position: relative;
+    margin-top: 170px;
+    margin-bottom: 0px;
+    background: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.characters{
+    position: relative;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.character{
+    position: relative;
+    z-index: 4;
+    float: left;
+    display: inline-block;
+    margin: 10px;
+}
+
+.character_name{
+    position: relative;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background: white;
 }

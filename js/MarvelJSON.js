@@ -61,14 +61,19 @@ function nothingFound(num) {
     document.getElementById('loader').style.visibility = 'hidden';
 }
 
+//начинаем работать с ивентами
+var next_event;
+var prev_event;
+var cur_event;
+
 function choosenEvent(num) {
     for (var i = 0; i < 3; i++) {
         document.getElementsByClassName('found')[i].style.visibility = 'hidden';
         document.getElementsByClassName('found')[i].style.display = "none";
         document.getElementsByClassName('found')[i].style.height = '120px';
     }
-
-    document.getElementById('cur_event').src = events.results[num].thumbnail.path + "/standard_large.jpg";
+    cur_event = events.results[num];
+    document.getElementById('cur_event').src = cur_event.thumbnail.path + "/standard_large.jpg";
 
     if (events.results[num].next.resourceURI)
         loadJSON(events.results[num].next.resourceURI + "?" + KEY, nextEvent);
@@ -78,14 +83,52 @@ function choosenEvent(num) {
     //todo придумать else
 
     document.getElementById('cur_event').src = events.results[num].thumbnail.path + "/standard_fantastic.jpg";
-
 }
 
-function nextEvent(next_event) {
-    document.getElementById('next_event').src = next_event.data.results[0].thumbnail.path + "/standard__fantastic.jpg";
+function nextEvent(data) {
+    next_event = data.data;
+    document.getElementById('next_event').src = next_event.results[0].thumbnail.path + "/standard__fantastic.jpg";
 }
 
-function previousEvent(prev_event) {
-    document.getElementById('prev_event').src = prev_event.data.results[0].thumbnail.path + "/standard_fantastic.jpg";
+function previousEvent(data) {
+    prev_event = data.data;
+    document.getElementById('prev_event').src = prev_event.results[0].thumbnail.path + "/standard_fantastic.jpg";
 }
 
+var chosen_event;
+
+$(document).ready(function () { //ждём клика
+
+    $(".event").click(function () {//по клику на картинку открываем информацию
+        var src = $(this).children(".img").attr('src');
+        var name = $(this).children(".title").text();
+        $("#timeline").append(
+            "<div class='zoomer'>" +
+            // "<div class='zoomer_bg'></div>" +
+            "<h1 class='zoomed_title' >" + name + "</h1>" +
+            "<img class='zoomed_img' src='" + src + "'/>")
+        //после картинки добавляем персонажей
+        $(".zoomer").append("<div class='grid'>");
+        $(".zoomer").children(".grid").append("<div class='col-1-1'>");
+        $(".zoomer").children(".grid").children(".col-1-1").append("<div class='characters'>");
+
+        for (var i = 0; i < 20; i++) { //chosen_event.characters.available
+            $(".characters").append("<div class='character'>" +
+                "<img src='http://via.placeholder.com/100'>" + //standard_medium.jpg
+                "<h3 class='character_name'>text</h3></div> "
+            )
+        }
+        $(".zoomer").children(".grid").children(".col-1-1").append("</div>");
+        $(".zoomer").children(".grid").append("</div>");
+        $(".zoomer").append("</div>");
+        $("body").append("</div>");
+        $(".zoomer").fadeIn(1000);
+
+        $(".zoomer").click(function () {
+            $(".zoomer").fadeOut(1000);
+            setTimeout(function () {
+                $(".zoomer").remove()
+            }, 1000)
+        });
+    })
+});
