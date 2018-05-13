@@ -30,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MarvelJSON.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MarvelJSON.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/MarvelJSON.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+            <state relative-caret-position="354">
+              <caret line="79" column="104" selection-start-line="79" selection-start-column="104" selection-end-line="79" selection-end-column="104" />
             </state>
           </provider>
         </entry>
@@ -42,8 +42,17 @@
       <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="145" column="12" selection-start-line="145" selection-start-column="12" selection-end-line="145" selection-end-column="12" />
+            <state relative-caret-position="357">
+              <caret line="196" column="12" lean-forward="true" selection-start-line="196" selection-start-column="12" selection-end-line="196" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="showInfo.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/showInfo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="103" selection-start-line="5" selection-start-column="103" selection-end-line="5" selection-end-column="103" />
             </state>
           </provider>
         </entry>
@@ -51,8 +60,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="61" column="47" selection-start-line="61" selection-start-column="47" selection-end-line="61" selection-end-column="47" />
+            <state relative-caret-position="102">
+              <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
               <folding>
                 <element signature="n#header#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#style#0;n#img#0;n#div#0;n#button#0;n#div#0;n#div#1;n#div#0;n#div#0;n#section#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -60,6 +69,7 @@
                 <element signature="n#style#0;n#h5#0;n#div#0;n#button#1;n#div#0;n#div#1;n#div#0;n#div#0;n#section#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#button#2;n#div#0;n#div#1;n#div#0;n#div#0;n#section#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h5#0;n#button#2;n#div#0;n#div#1;n#div#0;n#div#0;n#section#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -84,9 +94,14 @@
       <find>found</find>
       <find>header</find>
       <find>comic</find>
+      <find>events</find>
+      <find>xlarge</find>
+      <find>popup</find>
     </findStrings>
     <replaceStrings>
       <replace>title</replace>
+      <replace>large</replace>
+      <replace>zoomer</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -117,9 +132,10 @@
         <option value="$PROJECT_DIR$/css/test.css" />
         <option value="$PROJECT_DIR$/libraries/p5.Element.js" />
         <option value="$PROJECT_DIR$/pages/about.html" />
+        <option value="$PROJECT_DIR$/js/MarvelJSON.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/css/main.css" />
-        <option value="$PROJECT_DIR$/js/MarvelJSON.js" />
+        <option value="$PROJECT_DIR$/js/showInfo.js" />
       </list>
     </option>
   </component>
@@ -264,7 +280,17 @@
             <path>
               <item name="MarvelStorylines" type="b2602c69:ProjectViewProjectNode" />
               <item name="MarvelStorylines" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MarvelStorylines" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MarvelStorylines" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MarvelStorylines" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MarvelStorylines" type="462c0819:PsiDirectoryNode" />
+              <item name="libraries" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MarvelStorylines" type="b2602c69:ProjectViewProjectNode" />
@@ -300,12 +326,13 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Public\intelliJprj\MarvelStorylines\src\main\webapp\resourses\packges" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Public\intelliJprj\MarvelStorylines\css" />
       <recent name="C:\Users\Public\intelliJprj\MarvelStorylines\js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Public\intelliJprj\MarvelStorylines\libraries" />
+      <recent name="C:\Users\Public\intelliJprj\MarvelStorylines\src\main\webapp\resourses\packges" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -437,18 +464,22 @@
       <workItem from="1525771730307" duration="13677000" />
       <workItem from="1525870409175" duration="13829000" />
       <workItem from="1525912724454" duration="20611000" />
-      <workItem from="1526035634143" duration="11483000" />
+      <workItem from="1526035634143" duration="16228000" />
+      <workItem from="1526079032247" duration="1701000" />
+      <workItem from="1526125988095" duration="807000" />
+      <workItem from="1526128655046" duration="14506000" />
+      <workItem from="1526204361581" duration="5805000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125357000" />
+    <option name="totallyTimeSpent" value="152921000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49346405" visible="true" weight="0.28943452" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49346405" visible="true" weight="0.29017857" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.3290938" />
@@ -497,20 +528,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="90" column="14" selection-start-line="90" selection-start-column="14" selection-end-line="90" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/MarvelJSON.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="10" lean-forward="true" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/MarvelJSON.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -595,13 +612,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/jquery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-867">
-          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/simplegrid.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3301">
@@ -623,10 +633,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../Hardys_Old/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="67" column="33" lean-forward="true" selection-start-line="67" selection-start-column="33" selection-end-line="67" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/jquery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-40596">
+          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="61" column="47" selection-start-line="61" selection-start-column="47" selection-end-line="61" selection-end-column="47" />
+        <state relative-caret-position="102">
+          <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
           <folding>
             <element signature="n#header#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#style#0;n#img#0;n#div#0;n#button#0;n#div#0;n#div#1;n#div#0;n#div#0;n#section#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -634,21 +658,29 @@
             <element signature="n#style#0;n#h5#0;n#div#0;n#button#1;n#div#0;n#div#1;n#div#0;n#div#0;n#section#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#button#2;n#div#0;n#div#1;n#div#0;n#div#0;n#section#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h5#0;n#button#2;n#div#0;n#div#1;n#div#0;n#div#0;n#section#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="145" column="12" selection-start-line="145" selection-start-column="12" selection-end-line="145" selection-end-column="12" />
+        <state relative-caret-position="357">
+          <caret line="196" column="12" lean-forward="true" selection-start-line="196" selection-start-column="12" selection-end-line="196" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/MarvelJSON.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="79" column="104" selection-start-line="79" selection-start-column="104" selection-end-line="79" selection-end-column="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/showInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+          <caret line="5" column="103" selection-start-line="5" selection-start-column="103" selection-end-line="5" selection-end-column="103" />
         </state>
       </provider>
     </entry>
