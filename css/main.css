@@ -215,7 +215,7 @@ img {
     background: rgba(255,255,255,0.5);
 }
 
-.characters{
+#characters{
     clear: both;
     position: relative;
     text-align: center;

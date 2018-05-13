@@ -24,7 +24,7 @@ function FindEvents() {
     document.getElementById('loader').style.display = 'block';
     document.getElementById('loader').style.visibility = 'visible';
     eventName = inputID.value;
-    url = "https://gateway.marvel.com/v1/public/events" + KEY + "nameStartsWith=" + eventName;
+    url = "https://gateway.marvel.com/v1/public/events" + KEY + "&nameStartsWith=" + eventName;
     loadJSON(url, gotRequest);
 }
 
@@ -72,9 +72,8 @@ function choosenEvent(num) {
         document.getElementsByClassName('found')[i].style.display = "none";
         document.getElementsByClassName('found')[i].style.height = '120px';
     }
-    cur_event = events.results[num];
-    document.getElementById('cur_event').src = cur_event.thumbnail.path + "/standard_large.jpg";
 
+    loadJSON(events.results[num].resourceURI + KEY, currentEvent);
     if (events.results[num].next.resourceURI)
         loadJSON(events.results[num].next.resourceURI + KEY, nextEvent);
     //todo придумать else
@@ -82,21 +81,30 @@ function choosenEvent(num) {
         loadJSON(events.results[num].previous.resourceURI + KEY, previousEvent);
     //todo придумать else
 
-    document.getElementById('cur_event').src = events.results[num].thumbnail.path + "/standard_fantastic.jpg";
-}
 
-function nextEvent(data) {
-    next_event = data.data;
-    document.getElementById('next_event').src = next_event.results[0].thumbnail.path + "/standard__fantastic.jpg";
 }
 
 function previousEvent(data) {
     prev_event = data.data;
     document.getElementById('prev_event').src = prev_event.results[0].thumbnail.path + "/standard_fantastic.jpg";
+    document.getElementsByClassName('title')[3].innerText = prev_event.results[0].title;
+}
+
+function currentEvent(data) {
+    cur_event = data.data;
+    document.getElementById('cur_event').src = cur_event.results[0].thumbnail.path + "/standard_fantastic.jpg";
+    document.getElementsByClassName('title')[4].innerText = cur_event.results[0].title;
+}
+
+function nextEvent(data) {
+    next_event = data.data;
+    document.getElementById('next_event').src = next_event.results[0].thumbnail.path + "/standard_fantastic.jpg";
+    document.getElementsByClassName('title')[5].innerText = next_event.results[0].title;
 }
 
 var chosen_event;
 var char_pic;
+
 $(document).ready(function () { //ждём клика
 
     $(".event").click(function () {//по клику на картинку открываем информацию
@@ -106,26 +114,20 @@ $(document).ready(function () { //ждём клика
             "<div class='zoomer'>" +
             "<h1 class='zoomed_title' >" + name + "</h1>" +
             "<img class='zoomed_img' src='" + src + "'/>" +
-            "<p class='zoomed_description'>" + chosen_event.description + "</p>")
+            "<p class='zoomed_description'>" + chosen_event.results[0].description + "</p>")
         //после картинки добавляем персонажей
         $(".zoomer").append("<div class='grid'>");
         $(".zoomer").children(".grid").append("<div class='col-1-1'>");
         $(".zoomer").children(".grid").children(".col-1-1").append("<div class='characters'>" +
             "<h1 class='zoomed_title' style='margin-top: 10px'> Characters </h1>");
-
-        for (var i = 0; i < chosen_event.characters.available; i++) {
-            loadJSON(chosen_event.characters.items[i].resourseURI + KEY, getPicture);
-            $(".characters").append("<div class='character'>" +
-                "<img src=" + char_pic + ">" +
-                "<h3 class='character_name'></h3></div> "
-            )
+        for (var i = 0; i < chosen_event.results[0].characters.available && i<20; i++) {
+            loadJSON(chosen_event.results[0].characters.items[i].resourceURI + KEY, getPicture);
         }
         $(".zoomer").children(".grid").children(".col-1-1").append("</div>");
         $(".zoomer").children(".grid").append("</div>");
         $(".zoomer").append("</div>");
         $("body").append("</div>");
         $(".zoomer").fadeIn(1000);
-
         $(".zoomer").click(function () {
             $(".zoomer").fadeOut(1000);
             setTimeout(function () {
@@ -137,4 +139,8 @@ $(document).ready(function () { //ждём клика
 
 function getPicture(data) {
     char_pic = data.data.results[0].thumbnail.path + "/standard_medium.jpg";
+    $(".characters").append("<div class='character'>" +
+        "<img src=" + char_pic + ">" +
+        "<h3 class='character_name'>" + data.data.results[0].name + "</h3></div> ");
+
 }
