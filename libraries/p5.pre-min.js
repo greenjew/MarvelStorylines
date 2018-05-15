@@ -20177,23 +20177,23 @@ var p5 = function(sketch, node, sync) {
    * @method preload
    * @example
    * <div><code>
-   * var img;
+   * var thumbnail;
    * var c;
    * function preload() {
   // preload() runs once
-   *   img = loadImage('assets/laDefense.jpg');
+   *   thumbnail = loadImage('assets/laDefense.jpg');
    * }
    *
    * function setup() {
   // setup() waits until preload() is done
-   *   img.loadPixels();
+   *   thumbnail.loadPixels();
    *   // get color of middle pixel
-   *   c = img.get(img.width / 2, img.height / 2);
+   *   c = thumbnail.get(thumbnail.width / 2, thumbnail.height / 2);
    * }
    *
    * function draw() {
    *   background(c);
-   *   image(img, 25, 25, 50, 50);
+   *   image(thumbnail, 25, 25, 50, 50);
    * }
    * </code></div>
    *
@@ -23641,9 +23641,9 @@ p5.Element.prototype.dragLeave = function(fxn) {
  * }
  *
  * function gotFile(file) {
- *   var img = createImg(file.data).hide();
+ *   var thumbnail = createImg(file.data).hide();
  *   // Draw the image onto the canvas
- *   image(img, 0, 0, width, height);
+ *   image(thumbnail, 0, 0, width, height);
  * }
  * </code></div>
  *
@@ -26375,7 +26375,7 @@ var p5 = _dereq_('./core');
  * transformation matrix of the
  * form:
  *
- * > <img style="max-width: 150px" src="assets/transformation-matrix.png"
+ * > <thumbnail style="max-width: 150px" src="assets/transformation-matrix.png"
  * alt="The transformation matrix used when applyMatrix is called"/>
  *
  * @method applyMatrix
@@ -31049,48 +31049,48 @@ var p5 = _dereq_('../core/core'); // This is not global, but JSHint is not aware
  * @example
  * <div>
  * <code>
- * var img = createImage(66, 66);
- * img.loadPixels();
- * for (var i = 0; i < img.width; i++) {
- *   for (var j = 0; j < img.height; j++) {
- *     img.set(i, j, color(0, 90, 102));
+ * var thumbnail = createImage(66, 66);
+ * thumbnail.loadPixels();
+ * for (var i = 0; i < thumbnail.width; i++) {
+ *   for (var j = 0; j < thumbnail.height; j++) {
+ *     thumbnail.set(i, j, color(0, 90, 102));
  *   }
  * }
- * img.updatePixels();
- * image(img, 17, 17);
+ * thumbnail.updatePixels();
+ * image(thumbnail, 17, 17);
  * </code>
  * </div>
  *
  * <div>
  * <code>
- * var img = createImage(66, 66);
- * img.loadPixels();
- * for (var i = 0; i < img.width; i++) {
- *   for (var j = 0; j < img.height; j++) {
- *     img.set(i, j, color(0, 90, 102, (i % img.width) * 2));
+ * var thumbnail = createImage(66, 66);
+ * thumbnail.loadPixels();
+ * for (var i = 0; i < thumbnail.width; i++) {
+ *   for (var j = 0; j < thumbnail.height; j++) {
+ *     thumbnail.set(i, j, color(0, 90, 102, (i % thumbnail.width) * 2));
  *   }
  * }
- * img.updatePixels();
- * image(img, 17, 17);
- * image(img, 34, 34);
+ * thumbnail.updatePixels();
+ * image(thumbnail, 17, 17);
+ * image(thumbnail, 34, 34);
  * </code>
  * </div>
  *
  * <div>
  * <code>
  * var pink = color(255, 102, 204);
- * var img = createImage(66, 66);
- * img.loadPixels();
+ * var thumbnail = createImage(66, 66);
+ * thumbnail.loadPixels();
  * var d = pixelDensity();
  * var halfImage = 4 * (width * d) * (height / 2 * d);
  * for (var i = 0; i < halfImage; i += 4) {
- *   img.pixels[i] = red(pink);
- *   img.pixels[i + 1] = green(pink);
- *   img.pixels[i + 2] = blue(pink);
- *   img.pixels[i + 3] = alpha(pink);
+ *   thumbnail.pixels[i] = red(pink);
+ *   thumbnail.pixels[i + 1] = green(pink);
+ *   thumbnail.pixels[i + 2] = blue(pink);
+ *   thumbnail.pixels[i + 3] = alpha(pink);
  * }
- * img.updatePixels();
- * image(img, 17, 17);
+ * thumbnail.updatePixels();
+ * image(thumbnail, 17, 17);
  * </code>
  * </div>
  *
@@ -31354,12 +31354,12 @@ _dereq_('../core/error_helpers');
  * @example
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/laDefense.jpg');
+ *   thumbnail = loadImage('assets/laDefense.jpg');
  * }
  * function setup() {
- *   image(img, 0, 0);
+ *   image(thumbnail, 0, 0);
  * }
  * </code>
  * </div>
@@ -31367,8 +31367,8 @@ _dereq_('../core/error_helpers');
  * <code>
  * function setup() {
  *   // here we use a callback to display the image after loading
- *   loadImage('assets/laDefense.jpg', function(img) {
- *     image(img, 0, 0);
+ *   loadImage('assets/laDefense.jpg', function(thumbnail) {
+ *     image(thumbnail, 0, 0);
  *   });
  * }
  * </code>
@@ -31442,7 +31442,7 @@ function _sAssign(sVal, iVal) {
  * Draw an image to the p5.js canvas.
  *
  * This function can be used with different numbers of parameters. The
- * simplest use requires only three parameters: img, x, and y—where (x, y) is
+ * simplest use requires only three parameters: thumbnail, x, and y—where (x, y) is
  * the position of the image. Two more parameters can optionally be added to
  * specify the width and height of the image.
  *
@@ -31453,10 +31453,10 @@ function _sAssign(sVal, iVal) {
  * "source image" dimensions can be useful when you want to display a
  * subsection of the source image instead of the whole thing. Here's a diagram
  * to explain further:
- * <img src="assets/drawImage.png"></img>
+ * <thumbnail src="assets/drawImage.png"></thumbnail>
  *
  * @method image
- * @param  {p5.Image|p5.Element} img    the image to display
+ * @param  {p5.Image|p5.Element} thumbnail    the image to display
  * @param  {Number}   x     the x-coordinate of the top-left corner of the image
  * @param  {Number}   y     the y-coordinate of the top-left corner of the image
  * @param  {Number}   [width]  the width to draw the image
@@ -31464,28 +31464,28 @@ function _sAssign(sVal, iVal) {
  * @example
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/laDefense.jpg');
+ *   thumbnail = loadImage('assets/laDefense.jpg');
  * }
  * function setup() {
- *   // Top-left corner of the img is at (0, 0)
- *   // Width and height are the img's original width and height
- *   image(img, 0, 0);
+ *   // Top-left corner of the thumbnail is at (0, 0)
+ *   // Width and height are the thumbnail's original width and height
+ *   image(thumbnail, 0, 0);
  * }
  * </code>
  * </div>
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/laDefense.jpg');
+ *   thumbnail = loadImage('assets/laDefense.jpg');
  * }
  * function setup() {
  *   background(50);
- *   // Top-left corner of the img is at (10, 10)
+ *   // Top-left corner of the thumbnail is at (10, 10)
  *   // Width and height are 50 x 50
- *   image(img, 10, 10, 50, 50);
+ *   image(thumbnail, 10, 10, 50, 50);
  * }
  * </code>
  * </div>
@@ -31493,23 +31493,23 @@ function _sAssign(sVal, iVal) {
  * <code>
  * function setup() {
  *   // Here, we use a callback to display the image after loading
- *   loadImage('assets/laDefense.jpg', function(img) {
- *     image(img, 0, 0);
+ *   loadImage('assets/laDefense.jpg', function(thumbnail) {
+ *     image(thumbnail, 0, 0);
  *   });
  * }
  * </code>
  * </div>
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/gradient.png');
+ *   thumbnail = loadImage('assets/gradient.png');
  * }
  * function setup() {
  *   // 1. Background image
- *   // Top-left corner of the img is at (0, 0)
- *   // Width and height are the img's original width and height, 100 x 100
- *   image(img, 0, 0);
+ *   // Top-left corner of the thumbnail is at (0, 0)
+ *   // Width and height are the thumbnail's original width and height, 100 x 100
+ *   image(thumbnail, 0, 0);
  *   // 2. Top right image
  *   // Top-left corner of destination rectangle is at (50, 0)
  *   // Destination rectangle width and height are 40 x 20
@@ -31517,7 +31517,7 @@ function _sAssign(sVal, iVal) {
  *   // - Starting at position (50, 50) on the source image, capture a 50 x 50
  *   // subsection
  *   // - Draw this subsection to fill the dimensions of the destination rectangle
- *   image(img, 50, 0, 40, 20, 50, 50, 50, 50);
+ *   image(thumbnail, 50, 0, 40, 20, 50, 50, 50, 50);
  * }
  * </code>
  * </div>
@@ -31587,7 +31587,7 @@ p5.prototype.image = function(
   var pd = 1;
 
   if (img.elt && !img.canvas && img.elt.style.width) {
-    //if img is video and img.elt.size() has been used and
+    //if thumbnail is video and thumbnail.elt.size() has been used and
     //no width passed to image()
     if (img.elt.videoWidth && !dWidth) {
       pd = img.elt.videoWidth;
@@ -31635,42 +31635,42 @@ p5.prototype.image = function(
  * @example
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/laDefense.jpg');
+ *   thumbnail = loadImage('assets/laDefense.jpg');
  * }
  * function setup() {
- *   image(img, 0, 0);
+ *   image(thumbnail, 0, 0);
  *   tint(0, 153, 204); // Tint blue
- *   image(img, 50, 0);
+ *   image(thumbnail, 50, 0);
  * }
  * </code>
  * </div>
  *
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/laDefense.jpg');
+ *   thumbnail = loadImage('assets/laDefense.jpg');
  * }
  * function setup() {
- *   image(img, 0, 0);
+ *   image(thumbnail, 0, 0);
  *   tint(0, 153, 204, 126); // Tint blue and set transparency
- *   image(img, 50, 0);
+ *   image(thumbnail, 50, 0);
  * }
  * </code>
  * </div>
  *
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/laDefense.jpg');
+ *   thumbnail = loadImage('assets/laDefense.jpg');
  * }
  * function setup() {
- *   image(img, 0, 0);
+ *   image(thumbnail, 0, 0);
  *   tint(255, 126); // Apply transparency without changing color
- *   image(img, 50, 0);
+ *   image(thumbnail, 50, 0);
  * }
  * </code>
  * </div>
@@ -31717,15 +31717,15 @@ p5.prototype.tint = function() {
  * @example
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/bricks.jpg');
+ *   thumbnail = loadImage('assets/bricks.jpg');
  * }
  * function setup() {
  *   tint(0, 153, 204); // Tint blue
- *   image(img, 0, 0);
+ *   image(thumbnail, 0, 0);
  *   noTint(); // Disable tint
- *   image(img, 50, 0);
+ *   image(thumbnail, 50, 0);
  * }
  * </code>
  * </div>
@@ -31797,39 +31797,39 @@ p5.prototype._getTintedImageCanvas = function(img) {
  *
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/bricks.jpg');
+ *   thumbnail = loadImage('assets/bricks.jpg');
  * }
  * function setup() {
  *   imageMode(CORNER);
- *   image(img, 10, 10, 50, 50);
+ *   image(thumbnail, 10, 10, 50, 50);
  * }
  * </code>
  * </div>
  *
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/bricks.jpg');
+ *   thumbnail = loadImage('assets/bricks.jpg');
  * }
  * function setup() {
  *   imageMode(CORNERS);
- *   image(img, 10, 10, 90, 40);
+ *   image(thumbnail, 10, 10, 90, 40);
  * }
  * </code>
  * </div>
  *
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/bricks.jpg');
+ *   thumbnail = loadImage('assets/bricks.jpg');
  * }
  * function setup() {
  *   imageMode(CENTER);
- *   image(img, 50, 50, 80, 80);
+ *   image(thumbnail, 50, 50, 80, 80);
  * }
  * </code>
  * </div>
@@ -31894,8 +31894,8 @@ var Filters = _dereq_('./filters');
  * @example
  * <div><code>
  * function setup() {
- *   var img = createImage(100, 100); // same as new p5.Image(100, 100);
- *   img.loadPixels();
+ *   var thumbnail = createImage(100, 100); // same as new p5.Image(100, 100);
+ *   thumbnail.loadPixels();
  *   createCanvas(100, 100);
  *   background(0);
  *
@@ -31910,30 +31910,30 @@ var Filters = _dereq_('./filters');
  *
  *   var x, y;
  *   // fill with random colors
- *   for (y = 0; y < img.height; y++) {
- *     for (x = 0; x < img.width; x++) {
+ *   for (y = 0; y < thumbnail.height; y++) {
+ *     for (x = 0; x < thumbnail.width; x++) {
  *       var red = random(255);
  *       var green = random(255);
  *       var blue = random(255);
  *       var alpha = 255;
- *       writeColor(img, x, y, red, green, blue, alpha);
+ *       writeColor(thumbnail, x, y, red, green, blue, alpha);
  *     }
  *   }
  *
  *   // draw a red line
  *   y = 0;
- *   for (x = 0; x < img.width; x++) {
- *     writeColor(img, x, y, 255, 0, 0, 255);
+ *   for (x = 0; x < thumbnail.width; x++) {
+ *     writeColor(thumbnail, x, y, 255, 0, 0, 255);
  *   }
  *
  *   // draw a green line
- *   y = img.height - 1;
- *   for (x = 0; x < img.width; x++) {
- *     writeColor(img, x, y, 0, 255, 0, 255);
+ *   y = thumbnail.height - 1;
+ *   for (x = 0; x < thumbnail.width; x++) {
+ *     writeColor(thumbnail, x, y, 0, 255, 0, 255);
  *   }
  *
- *   img.updatePixels();
- *   image(img, 0, 0);
+ *   thumbnail.updatePixels();
+ *   image(thumbnail, 0, 0);
  * }
  * </code></div>
  *
@@ -31949,16 +31949,16 @@ p5.Image = function(width, height) {
    * @readOnly
    * @example
    * <div><code>
-   * var img;
+   * var thumbnail;
    * function preload() {
-   *   img = loadImage('assets/rockies.jpg');
+   *   thumbnail = loadImage('assets/rockies.jpg');
    * }
    *
    * function setup() {
    *   createCanvas(100, 100);
-   *   image(img, 0, 0);
-   *   for (var i = 0; i < img.width; i++) {
-   *     var c = img.get(i, img.height / 2);
+   *   image(thumbnail, 0, 0);
+   *   for (var i = 0; i < thumbnail.width; i++) {
+   *     var c = thumbnail.get(i, thumbnail.height / 2);
    *     stroke(c);
    *     line(i, height / 2, i, height);
    *   }
@@ -31976,16 +31976,16 @@ p5.Image = function(width, height) {
    * @readOnly
    * @example
    * <div><code>
-   * var img;
+   * var thumbnail;
    * function preload() {
-   *   img = loadImage('assets/rockies.jpg');
+   *   thumbnail = loadImage('assets/rockies.jpg');
    * }
    *
    * function setup() {
    *   createCanvas(100, 100);
-   *   image(img, 0, 0);
-   *   for (var i = 0; i < img.height; i++) {
-   *     var c = img.get(img.width / 2, i);
+   *   image(thumbnail, 0, 0);
+   *   for (var i = 0; i < thumbnail.height; i++) {
+   *     var c = thumbnail.get(thumbnail.width / 2, i);
    *     stroke(c);
    *     line(0, i, width / 2, i);
    *   }
@@ -32039,30 +32039,30 @@ p5.Image = function(width, height) {
    * @example
    * <div>
    * <code>
-   * var img = createImage(66, 66);
-   * img.loadPixels();
-   * for (var i = 0; i < img.width; i++) {
-   *   for (var j = 0; j < img.height; j++) {
-   *     img.set(i, j, color(0, 90, 102));
+   * var thumbnail = createImage(66, 66);
+   * thumbnail.loadPixels();
+   * for (var i = 0; i < thumbnail.width; i++) {
+   *   for (var j = 0; j < thumbnail.height; j++) {
+   *     thumbnail.set(i, j, color(0, 90, 102));
    *   }
    * }
-   * img.updatePixels();
-   * image(img, 17, 17);
+   * thumbnail.updatePixels();
+   * image(thumbnail, 17, 17);
    * </code>
    * </div>
    * <div>
    * <code>
    * var pink = color(255, 102, 204);
-   * var img = createImage(66, 66);
-   * img.loadPixels();
+   * var thumbnail = createImage(66, 66);
+   * thumbnail.loadPixels();
    * for (var i = 0; i < 4 * (width * height / 2); i += 4) {
-   *   img.pixels[i] = red(pink);
-   *   img.pixels[i + 1] = green(pink);
-   *   img.pixels[i + 2] = blue(pink);
-   *   img.pixels[i + 3] = alpha(pink);
+   *   thumbnail.pixels[i] = red(pink);
+   *   thumbnail.pixels[i + 1] = green(pink);
+   *   thumbnail.pixels[i + 2] = blue(pink);
+   *   thumbnail.pixels[i + 3] = alpha(pink);
    * }
-   * img.updatePixels();
-   * image(img, 17, 17);
+   * thumbnail.updatePixels();
+   * image(thumbnail, 17, 17);
    * </code>
    * </div>
    *
@@ -32228,16 +32228,16 @@ p5.Image.prototype.get = function(x, y, w, h) {
  * @example
  * <div>
  * <code>
- * var img = createImage(66, 66);
- * img.loadPixels();
- * for (var i = 0; i < img.width; i++) {
- *   for (var j = 0; j < img.height; j++) {
- *     img.set(i, j, color(0, 90, 102, (i % img.width) * 2));
+ * var thumbnail = createImage(66, 66);
+ * thumbnail.loadPixels();
+ * for (var i = 0; i < thumbnail.width; i++) {
+ *   for (var j = 0; j < thumbnail.height; j++) {
+ *     thumbnail.set(i, j, color(0, 90, 102, (i % thumbnail.width) * 2));
  *   }
  * }
- * img.updatePixels();
- * image(img, 17, 17);
- * image(img, 34, 34);
+ * thumbnail.updatePixels();
+ * image(thumbnail, 17, 17);
+ * image(thumbnail, 34, 34);
  * </code>
  * </div>
  *
@@ -32261,18 +32261,18 @@ p5.Image.prototype.set = function(x, y, imgOrCol) {
  * @param {Number} height the resized image height
  * @example
  * <div><code>
- * var img;
+ * var thumbnail;
  *
  * function preload() {
- *   img = loadImage('assets/rockies.jpg');
+ *   thumbnail = loadImage('assets/rockies.jpg');
  * }
 
  * function draw() {
- *   image(img, 0, 0);
+ *   image(thumbnail, 0, 0);
  * }
  *
  * function mousePressed() {
- *   img.resize(50, 100);
+ *   thumbnail.resize(50, 100);
  * }
  * </code></div>
  *
@@ -32870,15 +32870,15 @@ p5.prototype.blend = function() {
  *
  * @example
  * <div><code>
- * var img;
+ * var thumbnail;
  *
  * function preload() {
- *   img = loadImage('assets/rockies.jpg');
+ *   thumbnail = loadImage('assets/rockies.jpg');
  * }
  *
  * function setup() {
- *   background(img);
- *   copy(img, 7, 22, 10, 10, 35, 25, 50, 50);
+ *   background(thumbnail);
+ *   copy(thumbnail, 7, 22, 10, 10, 35, 25, 50, 50);
  *   stroke(255);
  *   noFill();
  *   // Rectangle shows area being copied
@@ -32964,12 +32964,12 @@ p5.prototype.copy = function() {
  * @example
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/bricks.jpg');
+ *   thumbnail = loadImage('assets/bricks.jpg');
  * }
  * function setup() {
- *   image(img, 0, 0);
+ *   image(thumbnail, 0, 0);
  *   filter(THRESHOLD);
  * }
  * </code>
@@ -32977,12 +32977,12 @@ p5.prototype.copy = function() {
  *
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/bricks.jpg');
+ *   thumbnail = loadImage('assets/bricks.jpg');
  * }
  * function setup() {
- *   image(img, 0, 0);
+ *   image(thumbnail, 0, 0);
  *   filter(GRAY);
  * }
  * </code>
@@ -32990,12 +32990,12 @@ p5.prototype.copy = function() {
  *
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/bricks.jpg');
+ *   thumbnail = loadImage('assets/bricks.jpg');
  * }
  * function setup() {
- *   image(img, 0, 0);
+ *   image(thumbnail, 0, 0);
  *   filter(OPAQUE);
  * }
  * </code>
@@ -33003,12 +33003,12 @@ p5.prototype.copy = function() {
  *
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/bricks.jpg');
+ *   thumbnail = loadImage('assets/bricks.jpg');
  * }
  * function setup() {
- *   image(img, 0, 0);
+ *   image(thumbnail, 0, 0);
  *   filter(INVERT);
  * }
  * </code>
@@ -33016,12 +33016,12 @@ p5.prototype.copy = function() {
  *
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/bricks.jpg');
+ *   thumbnail = loadImage('assets/bricks.jpg');
  * }
  * function setup() {
- *   image(img, 0, 0);
+ *   image(thumbnail, 0, 0);
  *   filter(POSTERIZE, 3);
  * }
  * </code>
@@ -33029,12 +33029,12 @@ p5.prototype.copy = function() {
  *
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/bricks.jpg');
+ *   thumbnail = loadImage('assets/bricks.jpg');
  * }
  * function setup() {
- *   image(img, 0, 0);
+ *   image(thumbnail, 0, 0);
  *   filter(DILATE);
  * }
  * </code>
@@ -33042,12 +33042,12 @@ p5.prototype.copy = function() {
  *
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/bricks.jpg');
+ *   thumbnail = loadImage('assets/bricks.jpg');
  * }
  * function setup() {
- *   image(img, 0, 0);
+ *   image(thumbnail, 0, 0);
  *   filter(BLUR, 3);
  * }
  * </code>
@@ -33055,12 +33055,12 @@ p5.prototype.copy = function() {
  *
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/bricks.jpg');
+ *   thumbnail = loadImage('assets/bricks.jpg');
  * }
  * function setup() {
- *   image(img, 0, 0);
+ *   image(thumbnail, 0, 0);
  *   filter(ERODE);
  * }
  * </code>
@@ -33126,12 +33126,12 @@ p5.prototype.filter = function(operation, value) {
  * @example
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/rockies.jpg');
+ *   thumbnail = loadImage('assets/rockies.jpg');
  * }
  * function setup() {
- *   image(img, 0, 0);
+ *   image(thumbnail, 0, 0);
  *   var c = get();
  *   image(c, width / 2, 0);
  * }
@@ -33140,12 +33140,12 @@ p5.prototype.filter = function(operation, value) {
  *
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/rockies.jpg');
+ *   thumbnail = loadImage('assets/rockies.jpg');
  * }
  * function setup() {
- *   image(img, 0, 0);
+ *   image(thumbnail, 0, 0);
  *   var c = get(50, 90);
  *   fill(c);
  *   noStroke();
@@ -33173,15 +33173,15 @@ p5.prototype.get = function(x, y, w, h) {
  * @example
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/rockies.jpg');
+ *   thumbnail = loadImage('assets/rockies.jpg');
  * }
  *
  * function setup() {
- *   image(img, 0, 0);
+ *   image(thumbnail, 0, 0);
  *   var d = pixelDensity();
- *   var halfImage = 4 * (img.width * d) * (img.height * d / 2);
+ *   var halfImage = 4 * (thumbnail.width * d) * (thumbnail.height * d / 2);
  *   loadPixels();
  *   for (var i = 0; i < halfImage; i++) {
  *     pixels[i + halfImage] = pixels[i];
@@ -33252,13 +33252,13 @@ p5.prototype.loadPixels = function() {
  *
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/rockies.jpg');
+ *   thumbnail = loadImage('assets/rockies.jpg');
  * }
  *
  * function setup() {
- *   set(0, 0, img);
+ *   set(0, 0, thumbnail);
  *   updatePixels();
  *   line(0, 0, width, height);
  *   line(0, height, width, 0);
@@ -33292,15 +33292,15 @@ p5.prototype.set = function(x, y, imgOrCol) {
  * @example
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/rockies.jpg');
+ *   thumbnail = loadImage('assets/rockies.jpg');
  * }
  *
  * function setup() {
- *   image(img, 0, 0);
+ *   image(thumbnail, 0, 0);
  *   var d = pixelDensity();
- *   var halfImage = 4 * (img.width * d) * (img.height * d / 2);
+ *   var halfImage = 4 * (thumbnail.width * d) * (thumbnail.height * d / 2);
  *   loadPixels();
  *   for (var i = 0; i < halfImage; i++) {
  *     pixels[i + halfImage] = pixels[i];
@@ -34679,8 +34679,8 @@ p5.PrintWriter = function(filename, extension) {
  * save('myCanvas.jpg');
  *
  * // Saves pImage as a png image
- * var img = createImage(10, 10);
- * save(img, 'my.png');
+ * var thumbnail = createImage(10, 10);
+ * save(thumbnail, 'my.png');
  *
  * // Saves canvas as an image
  * var cnv = createCanvas(100, 100);
@@ -45593,9 +45593,9 @@ p5.prototype.normalMaterial = function() {
  * @example
  * <div>
  * <code>
- * var img;
+ * var thumbnail;
  * function preload() {
- *   img = loadImage('assets/laDefense.jpg');
+ *   thumbnail = loadImage('assets/laDefense.jpg');
  * }
  *
  * function setup() {
@@ -45608,7 +45608,7 @@ p5.prototype.normalMaterial = function() {
  *   rotateX(frameCount * 0.01);
  *   rotateY(frameCount * 0.01);
  *   //pass image as texture
- *   texture(img);
+ *   texture(thumbnail);
  *   box(200, 200, 200);
  * }
  * </code>

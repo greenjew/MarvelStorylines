@@ -941,9 +941,9 @@ p5.Element.prototype.dragLeave = function(fxn) {
  * }
  *
  * function gotFile(file) {
- *   var img = createImg(file.data).hide();
+ *   var thumbnail = createImg(file.data).hide();
  *   // Draw the image onto the canvas
- *   image(img, 0, 0, width, height);
+ *   image(thumbnail, 0, 0, width, height);
  * }
  * </code></div>
  *

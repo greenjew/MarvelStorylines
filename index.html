@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="css/simplegrid.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href='https://fonts.googleapis.com/css?family=Marvel' rel='stylesheet'>
-
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -57,31 +56,26 @@
                     </h1>
                 </div>
                 <input type="text" id="inputID" placeholder="Let's find an event" oninput="FindEvents()">
-                <!--<button id="findButton" type="button" class="btn btn-default" onclick="FindEvents()">Find</button>-->
-                <div class="btn-group-vertical" id=foundEvents">
+                <div id="loader"></div>
+                <div class="btn-group-vertical" id="foundEvents">
                     <div class="col-1-1">
-                        <div id="loader"></div>
-                        <button class="found btn-default" type="button" onclick="choosenEvent(0)">
-                            <div class=col-1-1>
-                                <img class="thumb" style="float: left; margin-right: 10px">
-                                <h5 class="title" style="font-weight: bold"></h5>
-                                <p class="description"></p>
-                            </div>
-                        </button>
-
-                        <button class="found btn-default" type="button" onclick="choosenEvent(1)">
-                            <div class=col-1-1>
-                                <img class="thumb" style="float: left; margin-right: 10px">
-                                <h5 class="title" style="font-weight: bold"></h5>
-                                <p class="description"></p>
-                                </p>
-                            </div>
-                        </button>
-
-                        <button class="found btn-default" type="button" onclick="choosenEvent(2)">
+                        <button class="found btn-default" type="button" onclick="chosenEvent(0)">
                             <img class="thumb" style="float: left; margin-right: 10px">
                             <h5 class="title" style="font-weight: bold"></h5>
                             <p class="description"></p>
+                        </button>
+                        <button class="found btn-default" type="button" onclick="chosenEvent(1)">
+                            <img class="thumb" style="float: left; margin-right: 10px">
+                            <h5 class="title" style="font-weight: bold"></h5>
+                            <p class="description"></p>
+                        </button>
+                        <button class="found btn-default" type="button" onclick="chosenEvent(2)">
+                            <img class="thumb" style="float: left; margin-right: 10px">
+                            <h5 class="title" style="font-weight: bold"></h5>
+                            <p class="description"></p>
+                        </button>
+                        <button id="findMore" class="found btn-default" type="button" style=" width: 100%; height: 30px;">
+                            Show me MORE
                         </button>
                     </div>
                 </div>
@@ -93,27 +87,29 @@
         <div class="grid">
             <div class="col-1-1">
                 <div style="text-align: center">
-                    <h1 style="display: inline-block; float: left; margin-left: 20px"> Before </h1>
-                    <h1 style="display: inline-block "> Now </h1>
-                    <h1 style="display: inline-block; float: right; margin-right: 20px"> After </h1>
+                    <h1 style="color: white; display: inline-block; float: left; margin-left: 20px"> Before </h1>
+                    <h1 style="color: white; display: inline-block "> Now </h1>
+                    <h1 style="color: white; display: inline-block; float: right; margin-right: 20px"> After </h1>
                 </div>
                 <img src="img/Timeline.png" height="89" width=100%/>
-                <div class="events">
+                <div class="events" style="display: block">
                     <div class="event col-4-12">
-                        <h3 class="title"></h3>
-                        <img class="img" id="prev_event"
+                        <h3 class="event_title"></h3>
+                        <img class="thumbnail" id="prev_event"
                              onclick="chosen_event = prev_event">
                     </div>
                     <div class="event col-4-12">
-                        <h3 class="title"></h3>
-                        <img class="img" id="cur_event"
+                        <h3 class="event_title"></h3>
+                        <img class="thumbnail" id="cur_event"
                              onclick="chosen_event = cur_event">
                     </div>
-                    <div class="event col-4-12">
-                        <h3 class="title"></h3>
-                        <img class="img" id="next_event"
+                        <div class="event col-4-12">
+                        <h3 class="event_title"></h3>
+                        <img class="thumbnail" id="next_event"
                              onclick="chosen_event = next_event">
                     </div>
+
+                    <button id="showMore" type="button" class="btn btn-default">Show More</button>
                 </div>
             </div>
         </div>
@@ -124,6 +120,7 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>

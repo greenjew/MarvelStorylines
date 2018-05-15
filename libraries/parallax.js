@@ -194,7 +194,7 @@
 
             if (parallax.options.blur && !parallax.isIE() && !parallax.options.pattern) {
 
-                $('<img/>', {src: parallax.options.url}).load(function () {
+                $('<thumbnail/>', {src: parallax.options.url}).load(function () {
                     var dh = parallax.$image.height() / this.height,
                         dw = parallax.$image.width() / this.width,
                         blur = Math.floor(Math.max(dh, dw));

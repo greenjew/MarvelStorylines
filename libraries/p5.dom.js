@@ -306,7 +306,7 @@
   });
 
   /**
-   * Creates an &lt;img&gt; element in the DOM with given src and
+   * Creates an &lt;thumbnail&gt; element in the DOM with given src and
    * alternate text.
    * Appends to the container node if one is specified, otherwise
    * appends to body.
@@ -323,7 +323,7 @@
    */
   p5.prototype.createImg = function() {
     p5._validateParameters('createImg', arguments);
-    var elt = document.createElement('img');
+    var elt = document.createElement('thumbnail');
     var args = arguments;
     var self;
     var setAttrs = function() {
@@ -818,7 +818,7 @@
    * @return {Object|p5.Element} pointer to p5.Element holding created DOM element
    * @example
    * var input;
-   * var img;
+   * var thumbnail;
    *
    * function setup() {
    *   input = createFileInput(handleFile);
@@ -826,16 +826,16 @@
    * }
    *
    * function draw() {
-   *   if (img) {
-   *     image(img, 0, 0, width, height);
+   *   if (thumbnail) {
+   *     image(thumbnail, 0, 0, width, height);
    *   }
    * }
    *
    * function handleFile(file) {
    *   print(file);
    *   if (file.type === 'image') {
-   *     img = createImg(file.data);
-   *     img.hide();
+   *     thumbnail = createImg(file.data);
+   *     thumbnail.hide();
    *   }
    * }
    */
