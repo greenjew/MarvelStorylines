@@ -1,6 +1,6 @@
 var eventName;
-//var KEY = "ts=1&apikey=d92575fb645d421c9199398b0814ee26&hash=81f81b4409078c6f4c68f29fab98978b";
-var KEY = "?ts=1&apikey=7e704b2ecd024f62dc85df72b021527d&hash=3ea586f112e67bf98358bb2a4737aad2";
+var KEY = "?ts=1&apikey=d92575fb645d421c9199398b0814ee26&hash=81f81b4409078c6f4c68f29fab98978b";
+//var KEY = "?ts=1&apikey=7e704b2ecd024f62dc85df72b021527d&hash=3ea586f112e67bf98358bb2a4737aad2";
 var url;
 var events;
 var inputID;
@@ -93,12 +93,6 @@ $(document).ready(function () {
                     "<p class ='description'>" + events.results[i].description + "</p></div>"
                 );
             }
-            // $("#moreEvents").children('.event').click(function () {
-            //     $("#moreEvents").fadeOut(500);
-            //     setTimeout(function () {
-            //         $("#moreEvents").remove()
-            //     }, 500)
-            // });
         });
 });
 
@@ -155,7 +149,7 @@ $(document).ready(function () {
         function showIinfo() {//по клику на cобытие на таймлайне открываем информацию
             var src = $(this).children(".thumbnail").attr('src');
             var name = $(this).children(".event_title").text();
-            $("#timeline").append(
+            $("#timeline").prepend(
                 "<div class='zoomer'>" +
                 "<h1 class='zoomed_title' >" + name + "</h1>" +
                 "<img class='zoomed_img' src='" + src + "'/>" +
