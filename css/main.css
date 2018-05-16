@@ -73,13 +73,6 @@ img {
     float: left;
 }
 
-#foundEvents {
-    width: 80%;
-    font-size: 20pt;
-    float: left;
-    visibility: hidden;
-}
-
 .found {
     display: none;
     width: 100%;
@@ -135,6 +128,10 @@ img {
     100% {
         transform: rotate(360deg);
     }
+}
+
+#viewport{
+    height: 1000px;
 }
 
 #timeline {

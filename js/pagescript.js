@@ -6,7 +6,6 @@ var events;
 var inputID;
 
 //Called after inputing text
-eventName = inputID.value;
 url = "https://gateway.marvel.com/v1/public/events" + KEY + "&nameStartsWith=" + eventName;
 
 
