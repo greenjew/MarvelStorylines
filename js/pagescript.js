@@ -5,104 +5,37 @@ var url;
 var events;
 var inputID;
 
-function setup() {
-    inputID = document.getElementById('inputID');
-}
-
 //Called after inputing text
-function FindEvents() {
-    for (var i = 2; i >= 0; i--) {
-        document.getElementsByClassName('found')[i].style.visibility = 'hidden';
-        document.getElementsByClassName('found')[i].style.display = "none";
-        document.getElementsByClassName('found')[i].style.height = '120px';
-        document.getElementsByClassName('thumb')[i].src = "";
-        document.getElementsByClassName('description')[i].innerText = "";
-        document.getElementsByClassName('title')[i].innerText = "";
-    }
-    document.getElementById('findMore').style.display = 'none';
-    if (inputID.value === "")
-        return;
-    document.getElementById('loader').style.display = 'inline-block';
-    document.getElementById('loader').style.visibility = 'visible';
-    eventName = inputID.value;
-    url = "https://gateway.marvel.com/v1/public/events" + KEY + "&nameStartsWith=" + eventName;
-    (loadJSON(url, gotRequest));
-}
+eventName = inputID.value;
+url = "https://gateway.marvel.com/v1/public/events" + KEY + "&nameStartsWith=" + eventName;
 
-
-function gotRequest(data) {
-    events = data.data;
-    for (var i = 0; i < 4; i++) {
-        if (events.results[i]) {
-            if (i > 2) {
-                document.getElementById('findMore').style.display = 'block';
-                document.getElementById('findMore').style.visibility = 'visible';
-                break;
-            }
-            gotMoreData(events.results[i], i);
-        }
-        else {
-            if (i < 3)
-                nothingFound(i);
-            break;
-        }
-    }
-
-    document.getElementById('loader').style.display = 'none';
-    document.getElementById('loader').style.visibility = 'hidden';
-}
 
 //found event - showed it
-function gotMoreData(data, num) {
-    var image_url = data.thumbnail.path;
-    document.getElementsByClassName('thumb')[num].src = image_url + "/standard_medium.jpg";
-    document.getElementsByClassName('description')[num].innerText = data.description;
-    document.getElementsByClassName('title')[num].innerText = data.title;
-    document.getElementsByClassName('found')[num].style.display = 'inline-block';
-    document.getElementsByClassName('found')[num].style.visibility = 'visible';
-}
-
-//if there no more events
-function nothingFound(num) {
-    document.getElementsByClassName('title')[num].innerText = 'Nothing else found';
-    document.getElementsByClassName('found')[num].style.height = '35px';
-    document.getElementsByClassName('found')[num].style.display = 'inline-block';
-    document.getElementsByClassName('found')[num].style.visibility = 'visible';
-    document.getElementById('loader').style.display = 'none';
-    document.getElementById('loader').style.visibility = 'hidden';
-}
-
 $(document).ready(function () {
 
-    $("#findMore").click(
-        function showAllFound() {
-            for (var i = 0; i < 4; i++) {
-                document.getElementsByClassName('found')[i].style.visibility = 'hidden';
-                document.getElementsByClassName('found')[i].style.display = "none";
-                document.getElementsByClassName('found')[i].style.height = '120px';
-            }
-            $("main").append("<section id='moreEvents'><div class='grid'><div class='col-1-1' style='position: relative'></div></div></section>");
-            var workspace = $("main").children("#moreEvents").children(".grid").children(".col-1-1");
+    //вызывается вместе с построением графа и таймлайна
+    function showAllFound() {
+        $("main").append("<section id='moreEvents'><div class='grid'><div class='col-1-1' style='position: relative'></div></div></section>");
+        var workspace = $("main").children("#moreEvents").children(".grid").children(".col-1-1");
 
-            for (var i = 0; i < events.total; i++) {
-                var eventThumbnail = events.results[i].thumbnail.path + "/standard_medium.jpg";
-                workspace.append("<div class= 'event' style= '" +
-                    " width: 30%; border: black solid 2px; margin: 2% 2% 0 0;'  onclick='chosenEvent(" + i + ")'>" +
-                    "<img class='thumb' style='float: left; margin: 10px' src=" + eventThumbnail + ">" +
-                    "<h5 class='title' style='font-weight: bold'>" + events.results[i].title + "</h5>" +
-                    "<p class ='description'>" + events.results[i].description + "</p></div>"
-                );
-            }
-        });
+        for (var i = 0; i < events.total; i++) {
+            var eventThumbnail = events.results[i].thumbnail.path + "/standard_medium.jpg";
+            workspace.append("<div class= 'event' style= '" +
+                " width: 30%; border: black solid 2px; margin: 2% 2% 0 0;'  onclick='chosenEvent(" + i + ")'>" +
+                "<img class='thumb' style='float: left; margin: 10px' src=" + eventThumbnail + ">" +
+                "<h5 class='title' style='font-weight: bold'>" + events.results[i].title + "</h5>" +
+                "<p class ='description'>" + events.results[i].description + "</p></div>"
+            );
+        }
+    }
 });
-
-;
 
 //начинаем работать с ивентами
 var next_event;
 var prev_event;
 var cur_event;
 
+//todo: Брать информацию из json и обращаться из таймлайна и всех событий
 function chosenEvent(num) {
     $("#moreEvents").remove()
     for (var i = 0; i < 3; i++) {
@@ -146,7 +79,8 @@ var char_pic;
 $(document).ready(function () {
 
     $(".event").click(
-        function showIinfo() {//по клику на cобытие на таймлайне открываем информацию
+        //по клику на cобытие на визуализации "порядок" открываем информацию
+        function showIinfo() {
             var src = $(this).children(".thumbnail").attr('src');
             var name = $(this).children(".event_title").text();
             $("#timeline").prepend(

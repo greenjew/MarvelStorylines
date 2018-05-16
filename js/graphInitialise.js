@@ -1,4 +1,4 @@
-(function ($) {
+(function render($) {
     var Renderer = function (canvas) {
         var canvas = $(canvas).get(0);
         var ctx = canvas.getContext("2d");
@@ -20,8 +20,8 @@
 
                 particleSystem.eachEdge(	//отрисуем каждую грань
                     function (edge, pt1, pt2) {	//будем работать с гранями и точками её начала и конца
-                        ctx.strokeStyle = "rgba(0,0,0, .333)";	//грани будут чёрным цветом с некой прозрачностью
-                        ctx.lineWidth = 1;	//толщиной в один пиксель
+                        ctx.strokeStyle = "rgb(0,0,0)";	//грани будут чёрным цветом с некой прозрачностью
+                        ctx.lineWidth = 5;	//толщиной в один пиксель
                         ctx.beginPath();		//начинаем рисовать
                         ctx.moveTo(pt1.x, pt1.y); //от точки один
                         ctx.lineTo(pt2.x, pt2.y); //до точки два
@@ -82,37 +82,36 @@
         return that;
     }
 
-    $(document).ready(function () {
-        $()
+    $(document).ready(
+        function buildGraph() {
             $.getJSON("marvel_events.json",
                 function (data) {
                     var edges = [];
-                    var concurrences = [74];
-                    for (var i = 0; i < 74; i++)
-                        concurrences[i] = new Array(74);
-                    var events = new Array(74);
+                    var concurrences = [];
+                    for (var i = 0; i < 74; i++) {
+                        concurrences[i] = {};
+                    }
+                    var events = [];
                     //проходим по всем возможным парам без повторений
                     for (var i = 0; i < 74; i++) {
                         // event = JSON.stringify(event);
                         events[i] = {title: data[i].title};
                         for (var j = i + 1; j < 74; j++) {
-                            concurrences[i][j] = 0;
+                            concurrences[i][data[j].title] = [];
                             //ищем совпадения по персонажам
                             var count = 0;
                             for (var k = 0, flag = ""; k < data[i].characters.returned/*available*/; k++)
-                                for (var l = 0; l < data[j].characters.returned/*available*/; l++)
-                                    if (data[i].characters.items[k] == data[j].characters.items[l]) {
-                                        if (!flag) {
-                                            //     path = JSON.stringify(path);
-                                            edges[count] = {
-                                                src: data[i].title,
-                                                dest: data[j].title
-                                            }
-                                            flag = 1;
-                                            count++;
-                                        }
-                                        concurrences[i][j]++;
+                                for (var l = 0; l < data[j].characters.returned/*available*/; l++) {
+                                    // if (data[i].characters.items[k] == data[j].characters.items[l]) {
+                                    edges[count] = {
+                                        src: data[i].title,
+                                        dest: data[j].title
                                     }
+                                    flag = 1;
+                                    count++;
+                                    concurrences[i][data[j].title] = data[i].characters.items[k] ;
+                                    // }
+                                }
                         }
                     }
                     sys = arbor.ParticleSystem(100); // создаём систему
@@ -121,13 +120,13 @@
 
 
                     events.forEach(function (event, i, events) {
-                        sys.addNode(event.title);//добавляем вершину
+                        sys.addNode(event.title, {data: i});//добавляем вершину
                     })
 
                     edges.forEach(function (edge, i, edges) {
-                        sys.addEdge(sys.getNode(edge.src), sys.getNode(edge.dest));	//добавляем грань
+                        sys.addEdge(sys.getNode(edge.src), sys.getNode(edge.dest), {data: concurrences[i][edge.dest]});	//добавляем грань
                     });
-                })
+                });
         }
     )
 
