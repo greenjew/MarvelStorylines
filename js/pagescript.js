@@ -2,16 +2,12 @@ var eventName;
 var KEY = "?ts=1&apikey=d92575fb645d421c9199398b0814ee26&hash=81f81b4409078c6f4c68f29fab98978b";
 //var KEY = "?ts=1&apikey=7e704b2ecd024f62dc85df72b021527d&hash=3ea586f112e67bf98358bb2a4737aad2";
 var url;
-var events;
+var events = [];
 var inputID;
-
-//Called after inputing text
-url = "https://gateway.marvel.com/v1/public/events" + KEY + "&nameStartsWith=" + eventName;
 
 
 //found event - showed it
 $(document).ready(function () {
-
     //вызывается вместе с построением графа и таймлайна
     function showAllFound() {
         $("main").append("<section id='moreEvents'><div class='grid'><div class='col-1-1' style='position: relative'></div></div></section>");
@@ -48,10 +44,12 @@ function chosenEvent(num) {
     loadJSON(events.results[num].resourceURI + KEY, currentEvent);
     if (events.results[num].next.resourceURI)
         loadJSON(events.results[num].next.resourceURI + KEY, nextEvent);
-    //todo придумать else
+    else
+    document.getElementById('next_event').src = "../img/NotYet.png";
     if (events.results[num].previous.resourceURI)
         loadJSON(events.results[num].previous.resourceURI + KEY, previousEvent);
-    //todo придумать else
+    else
+    document.getElementById('prev_event').src = "../img/NotYet.png" ;
 }
 
 function previousEvent(data) {
@@ -76,8 +74,7 @@ var chosen_event;
 var char_pic;
 
 $(document).ready(function () {
-
-    $(".event").click(
+     $(".event").click(
         //по клику на cобытие на визуализации "порядок" открываем информацию
         function showIinfo() {
             var src = $(this).children(".thumbnail").attr('src');
@@ -122,4 +119,18 @@ function getCharacter(data) {
     $(".characters").append("<div class='character'>" +
         "<img src=" + char_pic + ">" +
         "<h3 class='character_name'>" + data.data.results[0].name + "</h3></div> ");
+}
+
+function sendData()
+{
+    var data = [document.getElementById("inputID")]
+    // Initialize packed or we get the word 'undefined'
+    var packed = "";
+    for (i = 0; (i < data.length); i++) {
+        if (i > 0) {
+            packed += ",";
+        }
+        packed += data[i];
+    }
+    window.location = "passdata2b.html?" + packed;
 }

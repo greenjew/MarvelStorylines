@@ -1,9 +1,11 @@
-(function render($) {
+(function render() {
     var Renderer = function (canvas) {
         var canvas = $(canvas).get(0);
         var ctx = canvas.getContext("2d");
         var particleSystem;
-
+        var text = null;
+        var date;
+        var changed;
         var that = {
             init: function (system) {
                 //начальная инициализация
@@ -15,13 +17,16 @@
 
             redraw: function () {
                 //действия при перересовке
-                ctx.fillStyle = "white";	//белым цветом
-                ctx.fillRect(0, 0, canvas.width, canvas.height); //закрашиваем всю область
+                ctx.fillStyle = "white";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                $("#findButton").click(function () {
+                    changed = true;
+                });
 
                 particleSystem.eachEdge(	//отрисуем каждую грань
                     function (edge, pt1, pt2) {
-                        ctx.strokeStyle = "rgb(0,0,0)";
-                        ctx.lineWidth = 5;
+                        ctx.strokeStyle = "rgba(0,0,0,0.3)";
+                        ctx.lineWidth = 2;
                         ctx.beginPath();
                         ctx.moveTo(pt1.x, pt1.y);
                         ctx.lineTo(pt2.x, pt2.y);
@@ -30,10 +35,13 @@
 
                 particleSystem.eachNode(	//теперь каждую вершину
                     function (node, pt) {
-                        var w = 10;
-                        ctx.fillStyle = "orange";
-                        ctx.fillRect(pt.x - w / 2, pt.y - w / 2, w, w);
-                        ctx.fillStyle = "black";
+                        if (node.data.image) {
+                            node.data.imageob = new Image()
+                            node.data.imageob.src = node.data.image
+                        }
+                        var imageob = node.data.imageob;
+                        ctx.drawImage(imageob, pt.x, pt.y, 20, 20);
+                        ctx.fillStyle = "red";
                         ctx.font = 'italic 13px sans-serif';
                         ctx.fillText(node.name, pt.x + 8, pt.y + 8); //пишем имя у каждой точки
                     });
@@ -43,15 +51,16 @@
                 var dragged = null;			//вершина которую перемещают
                 var handler = {
                     clicked: function (e) {	//нажали
-                        var pos = $(canvas).offset();	//получаем позицию canvas
-                        _mouseP = arbor.Point(e.pageX - pos.left, e.pageY - pos.top); //и позицию нажатия кнопки относительно canvas
-                        dragged = particleSystem.nearest(_mouseP);	//определяем ближайшую вершину к нажатию
+                        var pos = $(canvas).offset();
+                        _mouseP = arbor.Point(e.pageX - pos.left, e.pageY - pos.top);
+                        dragged = particleSystem.nearest(_mouseP);
                         if (dragged && dragged.node !== null) {
                             dragged.node.fixed = true;	//фиксируем её
                         }
-                        $(canvas).bind('mousemove', handler.dragged);	//слушаем события перемещения мыши
-                        $(window).bind('mouseup', handler.dropped);		//и отпускания кнопки
+                        $(canvas).bind('mousemove', handler.dragged);
+                        $(window).bind('mouseup', handler.dropped);
                         return false;
+
                     },
                     dragged: function (e) {	//перетаскиваем вершину
                         var pos = $(canvas).offset();
@@ -77,57 +86,120 @@
                 // слушаем события нажатия мыши
                 $(canvas).mousedown(handler.clicked);
             },
-
         }
         return that;
-    }
+    };
+    var events = [];
+    var concurrences = [];
+    var chars = [[]];
+    var edges = [];
+    var file
+    $(document).ready(function () {
+        $.getJSON("src/marvel_events.json",
+            function (data) {
+                file = data;
+                var date = null;
+                for (var i = 0; i < 74 * 74; i++)
+                    edges[i] = {};
+                for (var i = 0; i < 74; i++) {
+                    concurrences[i] = {};
+                    events[i] = {title: data[i].title};
+                    chars[i] = data[i].characters.items;
+                }
+                var temp = 0;
+                //проходим по всем возможным парам без повторений
 
-    $(document).ready(
-        function buildGraph() {
-            $.getJSON("src/marvel_events.json",
-                function (data) {
-                    var edges = [];
-                    var concurrences = [];
-                    for (var i = 0; i < 74; i++) {
-                        concurrences[i] = {};
-                    }
-                    var events = [];
-                    //проходим по всем возможным парам без повторений
-                    for (var i = 0; i < 74; i++) {
-                        // event = JSON.stringify(event);
-                        events[i] = {title: data[i].title};
-                        for (var j = i + 1; j < 74; j++) {
-                            concurrences[i][data[j].title] = [];
-                            //ищем совпадения по персонажам
-                            var count = 0;
-                            for (var k = 0, flag = ""; k < data[i].characters.returned/*available*/; k++)
-                                for (var l = 0; l < data[j].characters.returned/*available*/; l++) {
-                                    // if (data[i].characters.items[k] == data[j].characters.items[l]) {
-                                    edges[count] = {
-                                        src: data[i].title,
-                                        dest: data[j].title
+            })
+    })
+    $(document).ready(function () {
+        $("#findButton").click(
+            function buildGraph() {
+                var name = $("#inputID").;
+                console.log(name);
+                var end =  new Date( $("#end_year").selectedIndex);
+                var start = new Date( $("#start_year").selectedIndex);
+                for (var i = 0; i < 74; i++) {
+                    for (var j = i; j < 74; j++) {
+                        concurrences[i][file[j].title] = [];
+                        //ищем совпадения по персонажам и проверяем временные рамки
+                        chars[i].forEach(function (char1) {
+                            chars[j].forEach(function (char2) {
+                                //если есть имя
+                                if (name){
+                                    if (char1.name.substr(0, name.length).trim() == name.trim()){
+                                        //если есть дата
+                                        if (start && end) {
+                                            if (file[i].end && file[j].start && (new Date(file[i].end.substr(0, 10)) < end)
+                                                && (new Date(file[j].start.substr(0, 10)) > start) &&
+                                                (char1.name.trim() == char2.name.trim())) {
+                                                edges[temp++] = {
+                                                    from: events[i].title,
+                                                    to: events[j].title
+                                                };
+                                                console.log(edges)
+                                                concurrences[i][file[j].title] = char1.name;
+
+                                            }
+
+                                        }
+                                        //есть имя но нет даты
+                                        else if ((char1.name.trim() == char2.name.trim())) {
+                                            edges[temp++] = {
+                                                from: events[i].title,
+                                                to: events[j].title
+                                            };
+                                            console.log(edges)
+                                            concurrences[i][file[j].title] = char1.name;
+
+                                        }
                                     }
-                                    flag = 1;
-                                    count++;
-                                    concurrences[i][data[j].title] = data[i].characters.items[k] ;
-                                    // }
-                                }
-                        }
+                                } else //нет имени
+                                    //есть дата
+                                    console.log("noname")
+                                    if (start && end) {
+                                        console.log("here")
+                                        if (file[i].end && file[j].start && (new Date(file[i].end.substr(0, 10)) < end)
+                                            && (new Date(file[j].start.substr(0, 10)) > start) &&
+                                            (char1.name.trim() == char2.name.trim())) {
+                                            edges[temp++] = {
+                                                from: events[i].title,
+                                                to: events[j].title
+                                            };
+
+                                            concurrences[i][file[j].title] = char1.name;
+                                        }
+
+                                    }
+                                    else //нет ни имени ни даты
+                                        if ((char1.name.trim() == char2.name.trim())) {
+                                        edges[temp++] = {
+                                            from: events[i].title,
+                                            to: events[j].title
+                                        };
+                                        concurrences[i][file[j].title] = char1.name;
+
+                                    }
+                            });
+                        });
                     }
-                    sys = arbor.ParticleSystem(100); // создаём систему
-                    sys.parameters({gravity: true}); // гравитация вкл
-                    sys.renderer = Renderer("#viewport"); //начинаем рисовать в выбраной области
+                }
+                sys = arbor.ParticleSystem(100000); // создаём систему
+                sys.parameters({gravity: false, dt: 0.2, stiffness: 1000});
+                sys.renderer = Renderer("#viewport");
 
+                events.forEach(function (event, i, events) {
+                    sys.addNode(event.title, {
+                        id: i,
+                        image: file[i].thumbnail.path + "/standard_small.jpg"
+                    });//добавляем вершину
+                })
 
-                    events.forEach(function (event, i, events) {
-                        sys.addNode(event.title, {data: i});//добавляем вершину
-                    })
-
-                    edges.forEach(function (edge, i, edges) {
-                        sys.addEdge(sys.getNode(edge.src), sys.getNode(edge.dest), {data: concurrences[i][edge.dest]});	//добавляем грань
-                    });
+                edges.forEach(function (edge) {
+                    sys.addEdge(sys.getNode(edge.from), sys.getNode(edge.to));	//добавляем грань
                 });
-        }
-    )
+            }
+        )
 
-})(this.jQuery)
+    })
+    ;
+})(this.jQuery);

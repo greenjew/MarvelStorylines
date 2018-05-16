@@ -130,10 +130,6 @@ img {
     }
 }
 
-#viewport{
-    height: 1000px;
-}
-
 #timeline {
     background-image: url("../img/kosmos.jpg");
     height: auto;
