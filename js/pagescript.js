@@ -4,6 +4,7 @@ var KEY = "?ts=1&apikey=d92575fb645d421c9199398b0814ee26&hash=81f81b4409078c6f4c
 var url;
 var chars = [[]];
 var events = [];
+var thumbs = []
 
 $(document).ready(function () {
     $.getJSON("src/marvel_events.json",
@@ -11,6 +12,7 @@ $(document).ready(function () {
             events = data;
             for (var i = 0; i < 74; i++) {
                 chars[data[i].title] = data[i].characters.items;
+                thumbs[data[i].title] = data[i].thumbnail.path + "/standard_fantastic.jpg";
             }
         })
 })
@@ -22,11 +24,11 @@ $(document).ready(function () {
         var workspace = $("main").children("#moreEvents").children(".grid").children(".col-1-1");
         $("div.event").remove();
         var name = document.getElementById("inputID").value;
-        events.forEach(function (event, i) {
+        events.forEach(function (event, i, events) {
                 if (event.title.substr(0, name.length).toLocaleLowerCase() == name.toLocaleLowerCase()) {
-                    var eventThumbnail = event.thumbnail.path + "/standard_medium.jpg";
                     workspace.append("<div class= 'event' onclick='chosenEvent(" + i + ")'>" +
-                        "<img class='thumb' style='float: left; margin: 10px' src=" + eventThumbnail + ">" +
+                        "<img class='thumb' style='float: left; margin: 10px;height: 100px;" +
+                        "width: 100px;' src=" + thumbs[event.title] + ">" +
                         "<h5 class='title' style='font-weight: bold'>" + event.title + "</h5>" +
                         "<p class ='description'>" + event.description + "</p></div>")
                 }
@@ -46,8 +48,8 @@ function chosenEvent(num) {
 
     document.getElementById('timeline').style.display = 'block';
     document.getElementsByClassName('events')[0].style.display = 'block';
-    currentEvent(events[num]);
 
+    currentEvent(events[num]);
     if (events[num].next.resourceURI)
         loadJSON(events[num].next.resourceURI + KEY, nextEvent);
     else
@@ -60,19 +62,19 @@ function chosenEvent(num) {
 
 function previousEvent(data) {
     prev_event = data.data;
-    document.getElementById('prev_event').src = prev_event.results[0].thumbnail.path + "/standard_fantastic.jpg";
+    document.getElementsByClassName('thumbnail')[0].src = thumbs[prev_event.results[0].title];
     document.getElementsByClassName('event_title')[0].innerText = prev_event.results[0].title;
 }
 
 function currentEvent(data) {
-    cur_event = data
-    document.getElementById('cur_event').src = cur_event.thumbnail.path + "/standard_fantastic.jpg";
+    cur_event = data;
+    document.getElementsByClassName('thumbnail')[1].src = thumbs[cur_event.title];
     document.getElementsByClassName('event_title')[1].innerText = cur_event.title;
 }
 
 function nextEvent(data) {
     next_event = data.data;
-    document.getElementById('next_event').src = next_event.results[0].thumbnail.path + "/standard_fantastic.jpg";
+    document.getElementsByClassName('thumbnail')[2].src = thumbs[next_event.results[0].title];
     document.getElementsByClassName('event_title')[2].innerText = next_event.results[0].title;
 }
 
