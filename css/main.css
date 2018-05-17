@@ -142,7 +142,7 @@ img {
 
 #timeline {
     background-image: url("../img/kosmos.jpg");
-    height: auto;
+    height: 400px;
     z-index: 1;
     display: none;
 }
@@ -151,6 +151,7 @@ img {
     display: none;
     padding: 0 0 70px 0;
     position: relative;
+    height: auto;
     text-align: center;
 }
 
@@ -161,6 +162,7 @@ img {
     border: black solid 2px;
     margin: 2% 2% 0 0;
     background: white;
+    cursor: pointer;
 }
 
 #showMore {
@@ -194,6 +196,13 @@ img {
             black 10px,
             black 20px
     );
+}
+
+.main_event{
+    position: relative;
+    display: inline-block;
+    width: 30%;
+    cursor: pointer;
 }
 
 .zoomer {

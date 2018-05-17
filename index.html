@@ -57,7 +57,7 @@
                         This is app that can help you to understand order of events in storyline of Marvel comics.
                     </h1>
                 </div>
-                <input type="text" id="inputID" placeholder="Let" s find an event">
+                <input type="text" id="inputID" placeholder="Let's find an event">
                 <button id="findButton" type="button" class="btn btn-default">Find</button>
                 <div id="loader"></div>
                 <select name="name" id="start_year" class="form-control">
@@ -93,7 +93,7 @@
             </div>
         </div>
     </section>
-    <canvas id="viewport" height="1000" width="1300" ; style="margin: 10px"></canvas>
+    <canvas id="viewport" height="500" width="1300" ; style="margin: 10px"></canvas>
     <section id="moreEvents">
         <div class="grid">
             <div class="col-1-1" style="position: relative">
@@ -108,23 +108,20 @@
                     <h1 style="color: white; display: inline-block "> Now </h1>
                     <h1 style="color: white; display: inline-block; float: right; margin-right: 20px"> After </h1>
                 </div>
-                <img data src="img/Timeline.png" height="89" width=100%/>
-                <div class="events" style="display: block">
-                    <div class="event col-4-12" data-depth="0.5">
+                <img src="img/Timeline.png" height="89" width="100%">
+                <div class="events">
+                    <div class="main_event col-4-12 "style="display: inline-block">
                         <h3 class="event_title"></h3>
-                        <img class="thumbnail" id="prev_event"
-                             onclick="chosen_event = prev_event.results[i]">
+                        <img alt="Image" class="thumbnail" src="" id="prev" onclick="{chosen_event = prev_event.results[0]}">
                     </div>
-                    <div class="event col-4-12" data-depth="0.5">
+                    <div class="main_event col-4-12"style="display: inline-block">
                         <h3 class="event_title"></h3>
-                        <img class="thumbnail" id="cur_event" onclick="chosen_event = cur_event">
+                        <img alt="Image" class="thumbnail" src="" id="cur" onclick="{chosen_event = cur_event}">
                     </div>
-                    <div class="event col-4-12" data-depth="0.5">
+                    <div class="main_event col-4-12" style="display: inline-block">
                         <h3 class="event_title"></h3>
-                        <img class="thumbnail" id="next_event" onclick="chosen_event = next_event.results[i]">
+                        <img alt="Image" class="thumbnail" src="" id="next" onclick="{chosen_event = next_event.results[0]}">
                     </div>
-
-                    <button id="showMore" type="button" class="btn btn-default">Show More</button>
                 </div>
             </div>
         </div>

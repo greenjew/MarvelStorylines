@@ -4,7 +4,7 @@ var KEY = "?ts=1&apikey=d92575fb645d421c9199398b0814ee26&hash=81f81b4409078c6f4c
 var url;
 var chars = [[]];
 var events = [];
-var thumbs = []
+var thumbs = [];
 
 $(document).ready(function () {
     $.getJSON("src/marvel_events.json",
@@ -43,38 +43,43 @@ var next_event;
 var prev_event;
 var cur_event;
 
-//todo: Брать информацию из json и обращаться из таймлайна и всех событий
 function chosenEvent(num) {
 
     document.getElementById('timeline').style.display = 'block';
     document.getElementsByClassName('events')[0].style.display = 'block';
 
     currentEvent(events[num]);
-    if (events[num].next.resourceURI)
-        loadJSON(events[num].next.resourceURI + KEY, nextEvent);
-    else
-        document.getElementById('next_event').src = "../img/NotYet.png";
-    if (events[num].previous.resourceURI)
-        loadJSON(events[num].previous.resourceURI + KEY, previousEvent);
-    else
-        document.getElementById('prev_event').src = "../img/NotYet.png";
+    if (events[num].next)
+        $.getJSON(events[num].next.resourceURI + KEY, nextEvent);
+
+    else {
+        document.getElementById('next').src = "img/NotYet.png";
+        document.getElementsByClassName('event_title')[2].innerText = "";
+    }
+
+    if (events[num].previous)
+        $.getJSON(events[num].previous.resourceURI + KEY, previousEvent);
+    else {
+        document.getElementById('prev').src = "img/NotYet.png";
+        document.getElementsByClassName('event_title')[0].innerText = "";
+    }
 }
 
 function previousEvent(data) {
     prev_event = data.data;
-    document.getElementsByClassName('thumbnail')[0].src = thumbs[prev_event.results[0].title];
+    document.getElementById('prev').src = thumbs[prev_event.results[0].title];
     document.getElementsByClassName('event_title')[0].innerText = prev_event.results[0].title;
 }
 
 function currentEvent(data) {
     cur_event = data;
-    document.getElementsByClassName('thumbnail')[1].src = thumbs[cur_event.title];
+    document.getElementById('cur').src = thumbs[cur_event.title];
     document.getElementsByClassName('event_title')[1].innerText = cur_event.title;
 }
 
 function nextEvent(data) {
     next_event = data.data;
-    document.getElementsByClassName('thumbnail')[2].src = thumbs[next_event.results[0].title];
+    document.getElementById('next').src = thumbs[next_event.results[0].title];
     document.getElementsByClassName('event_title')[2].innerText = next_event.results[0].title;
 }
 
@@ -82,7 +87,7 @@ var chosen_event;
 var char_pic;
 
 $(document).ready(function () {
-    $(".event").click(
+    $(".main_event").click(
         //по клику на cобытие на визуализации "порядок" открываем информацию
         function showIinfo() {
             var src = $(this).children(".thumbnail").attr('src');
@@ -100,26 +105,27 @@ $(document).ready(function () {
                 "<div class='characters'>" +
                 "<h1 class='zoomed_title' style='margin-top: 10px'> Characters </h1>" +
                 "</div></div></div>");
-
-            getCharacters(chosen_event);
+            for (var i = 0; i < chars[chosen_event.title].length; i++)
+                $.getJSON(chars[chosen_event.title][i].resourceURI + KEY, getCharacter)
 
             $(".zoomer").fadeIn(1000);
             $(".zoomer").click(function () {
                 $(".zoomer").fadeOut(1000);
                 setTimeout(function () {
+                    $(".zoomed_title").remove();
+                    $(".zoomed_description").remove();
+                    $(".characters").remove();
                     $(".zoomer").remove()
-                }, 1000)
+                }, 100)
             });
         });
 })
 ;
 
 //получаем ссылку на необходимого персонажа из json файла и выводим его в поле для персонажей
-function getCharacters(chosen) {
-    chars[chosen].forEach(function (character) {
-        char_pic = character.thumbnail.path + "/standard_medium.jpg";
-        $(".characters").append("<div class='character'>" +
-            "<img src=" + char_pic + ">" +
-            "<h3 class='character_name'>" + character.name + "</h3></div> ");
-    });
+function getCharacter(chosen) {
+    char_pic = chosen.data.results[0].thumbnail.path + "/standard_medium.jpg";
+    $(".characters").append("<div class='character'>" +
+        "<img src=" + char_pic + ">" +
+        "<h3 class='character_name'>" + chosen.data.results[0].name + "</h3></div> ");
 }
