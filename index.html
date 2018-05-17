@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/simplegrid.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Marvel' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=Marvel" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
 
@@ -57,8 +57,8 @@
                         This is app that can help you to understand order of events in storyline of Marvel comics.
                     </h1>
                 </div>
-                <input type="text" id="inputID" placeholder="Let's find an event">
-                <button id="findButton" type="button" class="btn btn-default" >Find</button>
+                <input type="text" id="inputID" placeholder="Let" s find an event">
+                <button id="findButton" type="button" class="btn btn-default">Find</button>
                 <div id="loader"></div>
                 <select name="name" id="start_year" class="form-control">
                     <option value="">Start of event</option>
@@ -94,6 +94,12 @@
         </div>
     </section>
     <canvas id="viewport" height="1000" width="1300" ; style="margin: 10px"></canvas>
+    <section id="moreEvents">
+        <div class="grid">
+            <div class="col-1-1" style="position: relative">
+            </div>
+        </div>
+    </section>
     <section id="timeline">
         <div class="grid">
             <div class="col-1-1">
@@ -107,7 +113,7 @@
                     <div class="event col-4-12" data-depth="0.5">
                         <h3 class="event_title"></h3>
                         <img class="thumbnail" id="prev_event"
-                             onclick="chosen_event = prev_event">
+                             onclick="chosen_event = prev_event.results[i]">
                     </div>
                     <div class="event col-4-12" data-depth="0.5">
                         <h3 class="event_title"></h3>
@@ -117,7 +123,7 @@
                     <div class="event col-4-12" data-depth="0.5">
                         <h3 class="event_title"></h3>
                         <img class="thumbnail" id="next_event"
-                             onclick="chosen_event = next_event">
+                             onclick="chosen_event = next_event.results[i]">
                     </div>
 
                     <button id="showMore" type="button" class="btn btn-default">Show More</button>

@@ -59,7 +59,7 @@ img {
     border-bottom: 5px;
 }
 
-#findButton{
+#findButton {
     position: relative;
     height: 40px;
     margin-top: 2px;
@@ -70,6 +70,7 @@ img {
     border-color: black;
     display: inline-block;
 }
+
 #inputID, #end_year, #start_year {
     width: 80%;
     position: relative;
@@ -156,11 +157,16 @@ img {
 .event {
     position: relative;
     display: inline-block;
+    width: 30%;
+    border: black solid 2px;
+    margin: 2% 2% 0 0;
+    background: white;
 }
 
 #showMore {
     text-align: center;
     position: relative;
+
 }
 
 .event_title {
@@ -178,6 +184,16 @@ img {
     width: 140px;
     margin-left: 30%;
     margin-right: 30%;
+}
+
+#moreEvents {
+    background: repeating-linear-gradient(
+            45deg,
+            red,
+            red 10px,
+            black 10px,
+            black 20px
+    );
 }
 
 .zoomer {

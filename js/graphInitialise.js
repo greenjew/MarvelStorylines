@@ -112,8 +112,12 @@
     $(document).ready(function () {
         $("#findButton").click(
             function buildGraph() {
+
+                counte = 0;
+                countn = 0;
                 nodes = [];
                 edges = [];
+
                 var name = document.getElementById("inputID").value;
                 var data = document.getElementById("start_year");
                 var start = new Date(data.options[data.selectedIndex].text);
@@ -132,17 +136,16 @@
                             //ищем совпадения по персонажам и проверяем временные рамки
                             chars[i].forEach(function (char1) {
                                 chars[j].forEach(function (char2) {
-                                    //если есть дата
+                                    //   если есть дата
                                     if (start && end) {
-                                        if (file[i].end && file[j].start && (new Date(file[i].end.substr(0, 10)) < end) && (new Date(file[j].start.substr(0, 10)) > start) && (char1.name.trim() == char2.name.trim())) {
+                                        if (file[i].end && file[j].start){ // && (+(new Date(file[i].end.substr(0, 10))) <= +end) && (+(new Date(file[j].start.substr(0, 10))) >= +start) && (char1.name == char2.name)) {
                                             edges[counte++] = {
                                                 from: events[i].title,
                                                 to: events[j].title
                                             };
                                             concurrences[i][file[j].title] = char1.name;
                                         }
-                                    } else
-                                    if (char1.name == char2.name) { // нет даты
+                                    } else if (char1.name == char2.name) { // нет даты
                                         edges[counte++] = {
                                             from: events[i].title,
                                             to: events[j].title
@@ -169,8 +172,7 @@
                 edges.forEach(function (edge) {
                     sys.addEdge(sys.getNode(edge.from), sys.getNode(edge.to));	//добавляем грань
                 });
-                counte = 0;
-                countn = 0;
+
             }
         )
     });
