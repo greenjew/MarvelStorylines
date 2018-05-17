@@ -158,7 +158,7 @@
                         }
                     }
                 }
-                sys = arbor.ParticleSystem(1000000); // создаём систему
+                sys = arbor.ParticleSystem(100000); // создаём систему
                 sys.parameters({gravity: false, dt: 0.2, stiffness: 1000});
                 sys.renderer = Renderer("#viewport");
 
@@ -176,4 +176,60 @@
             }
         )
     });
-})(this.jQuery);
+    var id;
+    $(document).ready(function () {
+        $(".event").click(
+            function buildGraph() {
+                counte = 0;
+                countn = 0;
+                nodes = [];
+                edges = [];
+
+                for (var i = 0; i < 74; i++)
+                    if (events[i].title.toLocaleLowerCase() == $(this).children(".title").text().toLocaleLowerCase()) {
+                        id = i;
+                        break
+                    }
+
+                nodes[countn++] =
+                    {
+                        title: events[id],
+                        id: id
+                    }
+                for (var j = 0; j < 74; j++) {
+                    concurrences[id][file[j].title] = [];
+                    //ищем совпадения по персонажам и проверяем временные рамки
+                    chars[id].forEach(function (char1) {
+                            chars[j].forEach(function (char2) {
+                                if (char1.name == char2.name) {
+                                    edges[counte++] = {
+                                        from: events[i].title,
+                                        to: events[j].title
+                                    };
+                                    concurrences[i][file[j].title] = char1.name;
+                                }
+
+                            });
+                        }
+                    );
+                }
+                sys = arbor.ParticleSystem(100000); // создаём систему
+                sys.parameters({gravity: false, dt: 0.2, stiffness: 1000});
+                sys.renderer = Renderer("#viewport");
+
+                nodes.forEach(function (node, i) {
+                    sys.addNode(node.title, {
+                        id: node.id,
+                        image: file[i].thumbnail.path + "/standard_small.jpg"
+                    });//добавляем вершину
+                })
+
+                edges.forEach(function (edge) {
+                    sys.addEdge(sys.getNode(edge.from), sys.getNode(edge.to));	//добавляем грань
+                });
+            })
+    })
+    ;
+
+})
+(this.jQuery);
