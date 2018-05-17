@@ -138,7 +138,7 @@
                                 chars[j].forEach(function (char2) {
                                     //   если есть дата
                                     if (start && end) {
-                                        if (file[i].end && file[j].start){ // && (+(new Date(file[i].end.substr(0, 10))) <= +end) && (+(new Date(file[j].start.substr(0, 10))) >= +start) && (char1.name == char2.name)) {
+                                        if (file[i].end && file[j].start && (+(new Date(file[i].end.substr(0, 10))) <= +end) && (+(new Date(file[j].start.substr(0, 10))) >= +start) && (char1.name == char2.name)) {
                                             edges[counte++] = {
                                                 from: events[i].title,
                                                 to: events[j].title

@@ -34,15 +34,9 @@
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                         data-target=".navbar-collapse">
-
                 </button>
-                <a id="nav" class="navbar-brand" href="index.html">Marvel universe events</a>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="pages/about.html">About</a></li>
-                </ul>
+                <a href="http://marvel.com" style="padding: 15px 15px; float: right">Data provided by Marvel. © 2018 MARVEL</a>
+                <a id="nav" class="navbar-brand" href="index.html" >Marvel universe events</a>
             </div>
         </div>
     </div>
@@ -61,7 +55,6 @@
                 <button id="findButton" type="button" class="btn btn-default">Find</button>
                 <div id="loader"></div>
                 <select name="name" id="start_year" class="form-control">
-                    <option value="">Start of event</option>
                     <option value="1984-00-00">1984</option>
                     <option value="1990-00-00">1990</option>
                     <option value="1995-00-00">1995</option>
@@ -110,17 +103,19 @@
                 </div>
                 <img src="img/Timeline.png" height="89" width="100%">
                 <div class="events">
-                    <div class="main_event col-4-12 "style="display: inline-block">
+                    <div class="main_event col-4-12 " style="display: inline-block">
                         <h3 class="event_title"></h3>
-                        <img alt="Image" class="thumbnail" src="" id="prev" onclick="{chosen_event = prev_event.results[0]}">
+                        <img alt="Image" class="thumbnail" src="" id="prev"
+                             onclick="{chosen_event = prev_event.results[0]}">
                     </div>
-                    <div class="main_event col-4-12"style="display: inline-block">
+                    <div class="main_event col-4-12" style="display: inline-block">
                         <h3 class="event_title"></h3>
                         <img alt="Image" class="thumbnail" src="" id="cur" onclick="{chosen_event = cur_event}">
                     </div>
                     <div class="main_event col-4-12" style="display: inline-block">
                         <h3 class="event_title"></h3>
-                        <img alt="Image" class="thumbnail" src="" id="next" onclick="{chosen_event = next_event.results[0]}">
+                        <img alt="Image" class="thumbnail" src="" id="next"
+                             onclick="{chosen_event = next_event.results[0]}">
                     </div>
                 </div>
             </div>

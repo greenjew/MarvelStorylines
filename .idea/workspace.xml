@@ -33,7 +33,7 @@
       <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-438">
+            <state relative-caret-position="17">
               <caret line="153" column="17" selection-start-line="153" selection-start-column="17" selection-end-line="153" selection-end-column="17" />
             </state>
           </provider>
@@ -42,9 +42,10 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="123" column="26" selection-start-line="123" selection-start-column="26" selection-end-line="123" selection-end-column="26" />
+            <state relative-caret-position="323">
+              <caret line="56" column="73" selection-start-line="56" selection-start-column="73" selection-end-line="56" selection-end-column="73" />
               <folding>
+                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#section#2;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#section#2;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#div#0;n#section#2;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -56,8 +57,8 @@
       <file leaf-file-name="pagescript.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/pagescript.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="694">
-              <caret line="118" column="22" selection-start-line="118" selection-start-column="22" selection-end-line="118" selection-end-column="22" />
+            <state relative-caret-position="124">
+              <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h5#0;n#div#0;n#!!top" expanded="true" />
@@ -67,20 +68,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="graphInitialise.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/graphInitialise.js">
+      <file leaf-file-name="marvel_requests.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/marvel_requests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="141" column="33" lean-forward="true" selection-start-line="141" selection-start-column="33" selection-end-line="141" selection-end-column="33" />
+            <state relative-caret-position="442">
+              <caret line="26" column="47" selection-end-line="36" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="marvel_events.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/marvel_events.json">
+          <provider selected="true" editor-type-id="LargeFileEditor">
+            <state relative-caret-position="-646">
+              <caret column="2170" selection-start-column="2170" selection-end-column="2170" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="graphInitialise.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/graphInitialise.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret column="5127" selection-start-column="5119" selection-end-column="5127" />
+            <state relative-caret-position="153">
+              <caret line="98" column="36" selection-start-line="98" selection-start-column="36" selection-end-line="98" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -183,9 +193,9 @@
         <option value="$PROJECT_DIR$/src/marvel_requests.py" />
         <option value="$PROJECT_DIR$/pages/about.html" />
         <option value="$PROJECT_DIR$/pages/graph.html" />
-        <option value="$PROJECT_DIR$/js/graphInitialise.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/css/main.css" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/graphInitialise.js" />
         <option value="$PROJECT_DIR$/js/pagescript.js" />
       </list>
     </option>
@@ -241,12 +251,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="MarvelStorylines" type="b2602c69:ProjectViewProjectNode" />
               <item name="MarvelStorylines" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MarvelStorylines" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MarvelStorylines" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MarvelStorylines" type="b2602c69:ProjectViewProjectNode" />
@@ -261,18 +277,12 @@
             <path>
               <item name="MarvelStorylines" type="b2602c69:ProjectViewProjectNode" />
               <item name="MarvelStorylines" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MarvelStorylines" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MarvelStorylines" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
@@ -300,15 +310,15 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Public\intelliJprj\MarvelStorylines\libraries" />
-      <recent name="C:\Users\Public\intelliJprj\MarvelStorylines\css" />
-      <recent name="C:\Users\Public\intelliJprj\MarvelStorylines\js" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Public\intelliJprj\MarvelStorylines\src" />
       <recent name="C:\Users\Public\intelliJprj\MarvelStorylines\libraries" />
       <recent name="C:\Users\Public\intelliJprj\MarvelStorylines\src\main\webapp\resourses\packges" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Public\intelliJprj\MarvelStorylines\libraries" />
+      <recent name="C:\Users\Public\intelliJprj\MarvelStorylines\css" />
+      <recent name="C:\Users\Public\intelliJprj\MarvelStorylines\js" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -451,17 +461,19 @@
       <workItem from="1526326947428" duration="16842000" />
       <workItem from="1526436245352" duration="14935000" />
       <workItem from="1526459618584" duration="27574000" />
+      <workItem from="1526539423829" duration="643000" />
+      <workItem from="1526542351868" duration="5183000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="256861000" />
+    <option name="totallyTimeSpent" value="263345000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49346405" visible="true" weight="0.21205357" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49346405" visible="true" weight="0.21205357" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.3290938" />
@@ -515,20 +527,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2210">
-          <caret line="130" column="1" selection-start-line="130" selection-start-column="1" selection-end-line="130" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/graphInitialise.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="116" column="46" selection-start-line="116" selection-start-column="46" selection-end-line="116" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/target/MarvelStorylines/app.js" />
     <entry file="file://$PROJECT_DIR$/pom.xml" />
     <entry file="file://$PROJECT_DIR$/target/MarvelStorylines/WEB-INF/web.xml" />
@@ -646,33 +644,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/marvel_requests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/graph.html" />
     <entry file="file://$PROJECT_DIR$/src/marvel_events.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
+        <state relative-caret-position="17">
           <caret column="5127" selection-start-column="5119" selection-end-column="5127" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/graphInitialise.js">
+    <entry file="uml://JavaScript-modules-diagram/C:/Users/Public/intelliJprj/MarvelStorylines/index.html">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JavaScript-modules-diagram</ID>
+          <OriginalElement>$PROJECT_DIR$/index.html</OriginalElement>
+          <nodes>
+            <node x="" y="">$PROJECT_DIR$/img/Timeline.png</node>
+            <node x="" y="">$PROJECT_DIR$/libraries/arbor.js</node>
+            <node x="" y="">$PROJECT_DIR$/css/bootstrap.min.css</node>
+            <node x="" y="">$PROJECT_DIR$/js/graphInitialise.js</node>
+            <node x="" y="">$PROJECT_DIR$/index.html</node>
+            <node x="" y="">$PROJECT_DIR$/libraries/jquery.js</node>
+            <node x="" y="">$PROJECT_DIR$/css/main.css</node>
+            <node x="" y="">$PROJECT_DIR$/libraries/p5.dom.js</node>
+            <node x="" y="">$PROJECT_DIR$/libraries/p5.js</node>
+            <node x="" y="">$PROJECT_DIR$/js/pagescript.js</node>
+            <node x="" y="">$PROJECT_DIR$/css/simplegrid.css</node>
+            <node x="" y="">https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js</node>
+            <node x="" y="">https://fonts.googleapis.com/css?family=Marvel</node>
+            <node x="" y="">https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css</node>
+            <node x="" y="">https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="265.5" y="250.5" />
+          <SelectedNodes />
+          <Categories>
+            <Category>All</Category>
+          </Categories>
+          <VISIBILITY>Details</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="141" column="33" lean-forward="true" selection-start-line="141" selection-start-column="33" selection-end-line="141" selection-end-column="33" />
+        <state relative-caret-position="17">
+          <caret line="153" column="17" selection-start-line="153" selection-start-column="17" selection-end-line="153" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="123" column="26" selection-start-line="123" selection-start-column="26" selection-end-line="123" selection-end-column="26" />
+        <state relative-caret-position="323">
+          <caret line="56" column="73" selection-start-line="56" selection-start-column="73" selection-end-line="56" selection-end-column="73" />
           <folding>
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#section#2;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#section#2;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#div#0;n#section#2;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -680,17 +705,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/main.css">
+    <entry file="file://$PROJECT_DIR$/src/marvel_requests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-438">
-          <caret line="153" column="17" selection-start-line="153" selection-start-column="17" selection-end-line="153" selection-end-column="17" />
+        <state relative-caret-position="442">
+          <caret line="26" column="47" selection-end-line="36" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/marvel_events.json">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="-646">
+          <caret column="2170" selection-start-column="2170" selection-end-column="2170" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/graphInitialise.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="98" column="36" selection-start-line="98" selection-start-column="36" selection-end-line="98" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/pagescript.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="694">
-          <caret line="118" column="22" selection-start-line="118" selection-start-column="22" selection-end-line="118" selection-end-column="22" />
+        <state relative-caret-position="124">
+          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
           <folding>
             <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h5#0;n#div#0;n#!!top" expanded="true" />
