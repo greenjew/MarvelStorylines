@@ -91,8 +91,10 @@
     var concurrences = [];
     var chars = [[]];
     var edges = [];
+    var nodes = [];
     var file;
-    var temp = 0;
+    var counte = 0;
+    var countn = 0;
     $(document).ready(function () {
         $.getJSON("src/marvel_events.json",
             function (data) {
@@ -110,52 +112,56 @@
     $(document).ready(function () {
         $("#findButton").click(
             function buildGraph() {
+                nodes = [];
+                edges = [];
                 var name = document.getElementById("inputID").value;
-                var end = new Date(document.getElementById("end_year").selectedIndex);
-                var start = new Date(document.getElementById("start_year").selectedIndex);
-
+                var data = document.getElementById("start_year");
+                var start = new Date(data.options[data.selectedIndex].text);
+                data = document.getElementById("end_year")
+                var end = new Date(data.options[data.selectedIndex].text);
                 //проходим по всем возможным парам без повторений
                 for (var i = 0; i < 74; i++) {
-                    for (var j = i; j < 74; j++) {
-                        concurrences[i][file[j].title] = [];
-                        //ищем совпадения по персонажам и проверяем временные рамки
-                        chars[i].forEach(function (char1) {
-                            chars[j].forEach(function (char2) {
-                                // //если есть дата
-                                // if (start && end) {
-                                //     if (file[i].end && file[j].start && (new Date(file[i].end.substr(0, 10)) < end)
-                                //         && (new Date(file[j].start.substr(0, 10)) > start) &&
-                                //         (char1.name.trim() == char2.name.trim())) {
-                                //         edges[temp++] = {
-                                //             from: events[i].title,
-                                //             to: events[j].title
-                                //         };
-                                //         concurrences[i][file[j].title] = char1.name;
-                                //     }
-                                //
-                                // }
-                                // // нет даты
-                                // else
-                                    if (char1.name.trim() == char2.name.trim()) {
-                                    edges[temp++] = {
-                                        from: events[i].title,
-                                        to: events[j].title
-                                    };
-                                    console.log(char1.name.trim())
-                                    concurrences[i][file[j].title] = char1.name;
-                                }
+                    if (events[i].title.substr(0, name.length).toLocaleLowerCase() == name.toLocaleLowerCase()) {
+                        nodes[countn++] =
+                            {
+                                title: file[i].title,
+                                id: i
+                            };
+                        for (var j = i; j < 74; j++) {
+                            concurrences[i][file[j].title] = [];
+                            //ищем совпадения по персонажам и проверяем временные рамки
+                            chars[i].forEach(function (char1) {
+                                chars[j].forEach(function (char2) {
+                                    //если есть дата
+                                    if (start && end) {
+                                        if (file[i].end && file[j].start && (new Date(file[i].end.substr(0, 10)) < end) && (new Date(file[j].start.substr(0, 10)) > start) && (char1.name.trim() == char2.name.trim())) {
+                                            edges[counte++] = {
+                                                from: events[i].title,
+                                                to: events[j].title
+                                            };
+                                            concurrences[i][file[j].title] = char1.name;
+                                        }
+                                    } else
+                                    if (char1.name == char2.name) { // нет даты
+                                        edges[counte++] = {
+                                            from: events[i].title,
+                                            to: events[j].title
+                                        };
+                                        concurrences[i][file[j].title] = char1.name;
+                                    }
+
+                                });
                             });
-                        });
+                        }
                     }
                 }
-
-                sys = arbor.ParticleSystem(100000); // создаём систему
-                sys.parameters({gravity: false, dt: 0.2, stiffness: 600});
+                sys = arbor.ParticleSystem(1000000); // создаём систему
+                sys.parameters({gravity: false, dt: 0.2, stiffness: 1000});
                 sys.renderer = Renderer("#viewport");
 
-                events.forEach(function (event, i, events) {
-                    sys.addNode(event.title, {
-                        id: i,
+                nodes.forEach(function (node, i) {
+                    sys.addNode(node.title, {
+                        id: node.id,
                         image: file[i].thumbnail.path + "/standard_small.jpg"
                     });//добавляем вершину
                 })
@@ -163,9 +169,9 @@
                 edges.forEach(function (edge) {
                     sys.addEdge(sys.getNode(edge.from), sys.getNode(edge.to));	//добавляем грань
                 });
+                counte = 0;
+                countn = 0;
             }
         )
-
-    })
-    ;
+    });
 })(this.jQuery);

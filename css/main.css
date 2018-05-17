@@ -57,11 +57,20 @@ img {
     min-height: 500px;
     width: 100%;
     border-bottom: 5px;
-    margin-bottom: 50px;
-
 }
 
-#inputID {
+#findButton{
+    position: relative;
+    height: 40px;
+    margin-top: 2px;
+    font-size: 20pt;
+    padding-top: 2px;
+    padding-bottom: 8px;
+    color: red;
+    border-color: black;
+    display: inline-block;
+}
+#inputID, #end_year, #start_year {
     width: 80%;
     position: relative;
     height: 40px;
